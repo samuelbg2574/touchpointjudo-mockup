@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kids Judo Classes | Touch Point Judo Academy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#9a1d20",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-container": "#ccdafd",
+              "tertiary-fixed-dim": "#bcc6e7",
+              error: "#ba1a1a",
+              background: "#f9f9f9",
+              "on-tertiary-fixed": "#101b34",
+              "on-secondary-container": "#515f7d",
+              "on-primary-fixed": "#410004",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#394763",
+              "surface-variant": "#e2e2e2",
+              "surface-container-high": "#e8e8e8",
+              "surface-container-low": "#f3f3f4",
+              "inverse-primary": "#ffb3ad",
+              "tertiary-fixed": "#dae2ff",
+              "on-background": "#1a1c1c",
+              "primary-fixed-dim": "#ffb3ad",
+              "outline-variant": "#e1bfbc",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#2f3131",
+              "on-primary-container": "#ffaca5",
+              "surface-container": "#eeeeee",
+              primary: "#78000d",
+              "surface-tint": "#af2d2d",
+              "secondary-fixed-dim": "#b8c6e9",
+              "surface-bright": "#f9f9f9",
+              "on-tertiary-fixed-variant": "#3c4661",
+              tertiary: "#2e3852",
+              "inverse-on-surface": "#f0f1f1",
+              "primary-fixed": "#ffdad7",
+              "tertiary-container": "#454f6b",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed": "#0c1b35",
+              "on-tertiary-container": "#b7c1e2",
+              "on-error": "#ffffff",
+              "on-surface": "#1a1c1c",
+              secondary: "#505e7c",
+              "on-primary-fixed-variant": "#8e1319",
+              "surface-dim": "#dadada",
+              "secondary-fixed": "#d7e2ff",
+              outline: "#8d706e",
+              "on-secondary": "#ffffff",
+              surface: "#f9f9f9",
+              "on-surface-variant": "#59413f",
+              "on-primary": "#ffffff"
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"]
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="bg-background font-body text-on-surface">
+    <nav class="sticky top-0 z-50 bg-white/80 shadow-sm backdrop-blur-xl dark:bg-slate-900/80">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-8 py-4">
+        <a class="text-xl font-black tracking-tight text-[#78000D] font-['Plus_Jakarta_Sans']" href="index.html">Touch Point Judo Academy</a>
+
+        <div class="hidden items-center gap-8 font-['Plus_Jakarta_Sans'] font-bold tracking-tight md:flex">
+          <a class="text-slate-600 transition-colors hover:text-[#9A1D20] dark:text-slate-400" href="index.html">Home</a>
+          <a aria-current="page" class="border-b-2 border-[#9A1D20] pb-1 text-[#9A1D20]" href="kids.html">Kids</a>
+          <a class="text-slate-600 transition-colors hover:text-[#9A1D20] dark:text-slate-400" href="adults.html">Adults</a>
+          <a class="text-slate-600 transition-colors hover:text-[#9A1D20] dark:text-slate-400" href="about.html">About</a>
+          <a class="rounded-full bg-gradient-to-r from-primary to-primary-container px-6 py-2 text-white shadow-md" href="about.html#visit">
+            Free Trial
+          </a>
+        </div>
+
+        <button
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+          class="text-primary md:hidden"
+          data-menu-toggle
+          type="button"
+        >
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+
+      <div class="hidden border-t border-slate-200/70 bg-white/95 px-8 py-4 md:hidden" data-mobile-menu>
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+          <a class="text-slate-600" href="index.html">Home</a>
+          <a aria-current="page" class="text-[#9A1D20]" href="kids.html">Kids</a>
+          <a class="text-slate-600" href="adults.html">Adults</a>
+          <a class="text-slate-600" href="about.html">About</a>
+          <a class="rounded-full bg-gradient-to-r from-primary to-primary-container px-6 py-3 text-center text-white" href="about.html#visit">
+            Free Trial
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="relative overflow-hidden bg-surface pt-12 pb-24 md:pt-20 md:pb-32">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2">
+        <div class="z-10">
+          <span class="mb-6 inline-block rounded-full bg-secondary-container px-4 py-1 text-sm font-semibold uppercase tracking-wide text-on-secondary-container font-label">
+            Elite Youth Program
+          </span>
+          <h1 class="mb-6 font-headline text-5xl font-extrabold leading-[1.1] text-on-surface md:text-7xl">
+            The Best Start for <br /><span class="text-primary">Your Child.</span>
+          </h1>
+          <p class="mb-10 max-w-md text-lg leading-relaxed text-on-secondary-container">
+            Our Kids Judo Classes combine discipline, safety, and explosive fun to help your child grow into a confident and capable young individual.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a class="rounded-full bg-gradient-to-r from-primary to-primary-container px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:shadow-xl" href="about.html#visit">
+              Book a Free Trial Session
+            </a>
+            <a class="rounded-full bg-surface-container-high px-8 py-4 text-lg font-bold text-on-surface transition-all hover:bg-surface-container-highest" href="#class-structure">
+              View Schedule
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="overflow-hidden rounded-[2.5rem] shadow-2xl transition-transform duration-500 hover:rotate-0 md:rotate-2">
+            <img
+              alt="Vibrant photo of diverse group of happy children in white judo uniforms sitting together on blue mats in a bright sunlit martial arts dojo"
+              class="h-[500px] w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd2Q9bqgM3o6d7tMNDVUSb9suFI-gVnzpDiENZaKkdwZC2EZ9ny5JzJFkNb1Dsc_2o8DOeA-f2GFFeVMlf2MAsiDqDjEO-6QXvlXJWb9Bm4YS_m86YGKkaOdWpsoVL1JrvoHpQYPvjDuZCHe36kZ84iU9a8Cm2kOV74bmzgqQdWYT3iq49cYskE4IQbSqjM6YADU4tXO-jvrIVxK_5E3fB06bkzQvfbwlvdrL6_qjDPz1g0ks-xkIHS6a1A_Geo0sUX57MV8g71cI"
+            />
+          </div>
+          <div class="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-primary/10 blur-3xl"></div>
+          <div class="absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-secondary/10 blur-3xl"></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-surface-container-low py-24">
+      <div class="mx-auto max-w-7xl px-8">
+        <div class="mb-16 text-center">
+          <h2 class="mb-4 font-headline text-4xl font-extrabold text-on-surface md:text-5xl">Building Skills for Life</h2>
+          <div class="mx-auto h-1.5 w-24 rounded-full bg-primary"></div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div class="group rounded-xl bg-surface-container-lowest p-8 shadow-sm transition-shadow hover:shadow-md">
+            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-secondary-container transition-colors group-hover:bg-primary group-hover:text-white">
+              <span class="material-symbols-outlined text-3xl">shield</span>
+            </div>
+            <h3 class="mb-3 font-headline text-xl font-bold text-on-surface">Confidence</h3>
+            <p class="leading-relaxed text-on-secondary-container">Watching children master new techniques builds an unshakable sense of self-belief that extends beyond the dojo.</p>
+          </div>
+
+          <div class="group rounded-xl bg-surface-container-lowest p-8 shadow-sm transition-shadow hover:shadow-md">
+            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-secondary-container transition-colors group-hover:bg-primary group-hover:text-white">
+              <span class="material-symbols-outlined text-3xl">psychology</span>
+            </div>
+            <h3 class="mb-3 font-headline text-xl font-bold text-on-surface">Discipline</h3>
+            <p class="leading-relaxed text-on-secondary-container">We teach respect for instructors and peers, fostering a disciplined mindset that helps in school and life.</p>
+          </div>
+
+          <div class="group rounded-xl bg-surface-container-lowest p-8 shadow-sm transition-shadow hover:shadow-md">
+            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-secondary-container transition-colors group-hover:bg-primary group-hover:text-white">
+              <span class="material-symbols-outlined text-3xl">fitness_center</span>
+            </div>
+            <h3 class="mb-3 font-headline text-xl font-bold text-on-surface">Coordination</h3>
+            <p class="leading-relaxed text-on-secondary-container">Judo improves balance, agility, and motor skills through dynamic movements and technical training.</p>
+          </div>
+
+          <div class="group rounded-xl bg-surface-container-lowest p-8 shadow-sm transition-shadow hover:shadow-md">
+            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-secondary-container transition-colors group-hover:bg-primary group-hover:text-white">
+              <span class="material-symbols-outlined text-3xl">groups</span>
+            </div>
+            <h3 class="mb-3 font-headline text-xl font-bold text-on-surface">Social Skills</h3>
+            <p class="leading-relaxed text-on-secondary-container">Making friends and working as a team in a safe, supportive environment builds lifelong social foundations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24" id="class-structure">
+      <div class="mx-auto max-w-7xl px-8">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div class="flex flex-col justify-center lg:col-span-1">
+            <h2 class="mb-6 font-headline text-4xl font-extrabold leading-tight text-on-surface">Our Class Structure</h2>
+            <p class="mb-8 text-lg text-on-secondary-container">We offer age-appropriate training designed to meet children at their developmental level.</p>
+            <div class="rounded-xl border-l-4 border-primary bg-surface-container-low p-6">
+              <p class="mb-2 font-bold text-on-surface">Safety First Policy</p>
+              <p class="text-sm">All classes are taught on professional-grade mats by certified, background-checked instructors.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 lg:col-span-2 md:grid-cols-2">
+            <div class="rounded-xl border border-outline-variant/15 bg-surface-container-low p-8">
+              <div class="mb-6 flex items-start justify-between">
+                <div>
+                  <h4 class="font-headline text-2xl font-bold text-primary">Little Tigers</h4>
+                  <p class="font-medium text-on-secondary-container">Ages 4 - 7</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-primary/40">potted_plant</span>
+              </div>
+              <ul class="mb-8 space-y-4">
+                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-primary">check_circle</span> Intro to Judo basics</li>
+                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-primary">check_circle</span> Fun coordination games</li>
+                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-primary">check_circle</span> Focus &amp; listening skills</li>
+              </ul>
+              <p class="mb-2 text-sm font-bold uppercase tracking-wider text-on-surface">Schedule</p>
+              <p class="text-sm text-on-secondary-container">Mon, Wed, Fri | 4:00 PM</p>
+            </div>
+
+            <div class="rounded-xl bg-tertiary-container p-8 text-white">
+              <div class="mb-6 flex items-start justify-between">
+                <div>
+                  <h4 class="font-headline text-2xl font-bold text-white">Young Samurais</h4>
+                  <p class="font-medium text-tertiary-fixed-dim">Ages 8 - 12</p>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-white/40">swords</span>
+              </div>
+              <ul class="mb-8 space-y-4">
+                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-secondary-container">check_circle</span> Advanced technical Judo</li>
+                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-secondary-container">check_circle</span> Controlled sparring</li>
+                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-secondary-container">check_circle</span> Rank promotion system</li>
+              </ul>
+              <p class="mb-2 text-sm font-bold uppercase tracking-wider text-white">Schedule</p>
+              <p class="text-sm text-tertiary-fixed-dim">Tue, Thu | 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overflow-hidden bg-surface py-24">
+      <div class="mx-auto max-w-7xl px-8">
+        <div class="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
+          <div class="max-w-xl">
+            <h2 class="mb-6 font-headline text-4xl font-extrabold text-on-surface md:text-5xl">Learning Through Action</h2>
+            <p class="text-on-secondary-container">Our students don't just learn martial arts; they build friendships and memories that last a lifetime. Take a look at our training in action.</p>
+          </div>
+          <a class="rounded-full bg-primary px-8 py-4 font-bold text-white transition-colors hover:bg-primary-container" href="about.html">
+            See All Photos
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div class="group relative h-[400px] overflow-hidden rounded-xl">
+            <img
+              alt="Close-up of a young boy in a white judo gi smiling confidently while practicing a basic grappling move with a partner in a professional dojo"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR5DVQnffs96QOC7Llo0xmi9qxqsTF3Xq-D6rERZ-SBdldSDIKCFFYxLdXsw0ErqNQVdLinsjEIWCUiKTcrF8g8yDS5UWQa93cCq8lg0G4NnWhy5jLmEORWM1PpWvGkF7Peuj-Q6B9fK6N1gcP5V1J-AK2x6helJ7U1NzvmGVUXjOsZ9-tiAVAOHnj2wCPwVf-F8MoSY7grwV43QkUL8WkRcXeB2E6CPavSCVRQIalk_Vwn0drqgi1_amR5bx9dlsaw6-T5I2Mzy4"
+            />
+            <div class="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-6 opacity-0 transition-opacity group-hover:opacity-100">
+              <p class="font-bold text-white">Focus &amp; Precision</p>
+            </div>
+          </div>
+
+          <div class="relative h-[400px] overflow-hidden rounded-xl md:translate-y-12">
+            <div class="flex h-full w-full items-center justify-center bg-primary/5 p-8 text-center">
+              <div>
+                <span class="material-symbols-outlined mb-4 text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+                <h4 class="mb-4 font-headline text-2xl font-bold">Join our community</h4>
+                <p class="text-sm text-on-secondary-container">Our academy is more than just a gym; it's a family where everyone belongs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group relative h-[400px] overflow-hidden rounded-xl">
+            <img
+              alt="Judo coach kneeling with two young students on the mat"
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/aida/ADBb0ugJ8KLi8nUMB3JNbwEuslDekgskpXb02Rx2ZpvL503OnbHIbrPlefKEWTZ_Yr_KntcCZH9tNAm2BxqTWyGLh8WyfEzg88TJ3WLVGbjBGy5u417N6G-PZhzhRY939eMzZr-FE-ugeMQJFN4EwDisSB2qMAF81ecjO1tjjOzJCujTmwWauMG2SYkIBU9MOOITaBkGNV09sl2NWUnM7lVLysvOGKbnztbKBGkrH03zPD0oNI00hlIgKqtkGWqJaC5U8Qj7eoT2OZZbUw';"
+              src="assets/kids-community-photo.jpg"
+            />
+            <div class="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-6 opacity-0 transition-opacity group-hover:opacity-100">
+              <p class="font-bold text-white">Coaching &amp; Community</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface-container-low py-24">
+      <div class="mx-auto max-w-7xl px-8">
+        <h2 class="mb-16 text-center font-headline text-4xl font-extrabold text-on-surface">What Parents Say</h2>
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+          <div class="relative rounded-xl bg-white p-10 shadow-sm">
+            <div class="absolute -top-6 left-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+              <span class="material-symbols-outlined">format_quote</span>
+            </div>
+            <div class="mb-4 flex gap-1">
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="mb-6 text-lg italic leading-relaxed text-on-secondary-container">"Joining Touch Point Judo was the best decision we made for Leo. His focus in school has improved dramatically, and he looks forward to every session with so much excitement."</p>
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary-container font-bold text-on-secondary-container">SM</div>
+              <div>
+                <p class="font-bold text-on-surface">Sarah Miller</p>
+                <p class="text-sm text-on-secondary-container">Parent since 2022</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative rounded-xl bg-white p-10 shadow-sm">
+            <div class="absolute -top-6 left-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+              <span class="material-symbols-outlined">format_quote</span>
+            </div>
+            <div class="mb-4 flex gap-1">
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="mb-6 text-lg italic leading-relaxed text-on-secondary-container">"The atmosphere is incredibly professional yet warm and welcoming. My daughter was very shy, but the coaches have a way of making every child feel seen and valued."</p>
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary-container font-bold text-on-secondary-container">JC</div>
+              <div>
+                <p class="font-bold text-on-surface">James Chen</p>
+                <p class="text-sm text-on-secondary-container">Parent since 2023</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="mx-auto max-w-5xl px-8">
+        <div class="relative overflow-hidden rounded-[3rem] bg-tertiary p-12 text-center shadow-2xl md:p-20">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent"></div>
+          <div class="relative z-10">
+            <h2 class="mb-8 font-headline text-4xl font-extrabold text-white md:text-6xl">Ready to Start the Journey?</h2>
+            <p class="mx-auto mb-12 max-w-2xl text-lg text-tertiary-fixed-dim md:text-xl">
+              Give your child the gift of Judo. Book a free, no-obligation trial session today and see the difference for yourself.
+            </p>
+            <a class="inline-flex rounded-full bg-gradient-to-r from-primary to-primary-container px-12 py-5 text-xl font-black text-white shadow-xl transition-all hover:scale-105" href="about.html#visit">
+              Book a Free Trial Session
+            </a>
+            <p class="mt-8 text-sm font-medium text-white/60">No gi required for the first session. Just bring comfortable sports clothes!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="w-full bg-slate-100 pt-12 pb-8 dark:bg-slate-950">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-8 md:grid-cols-3">
+        <div>
+          <div class="mb-4 text-lg font-bold text-[#78000D]">Touch Point Judo Academy</div>
+          <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400 font-['Inter']">Dedicated to excellence in martial arts and character development for all ages.</p>
+        </div>
+
+        <div>
+          <h4 class="mb-4 font-bold text-on-surface">Quick Links</h4>
+          <div class="flex flex-col gap-3">
+            <a class="text-sm text-slate-500 hover:text-[#9A1D20] hover:underline dark:text-slate-400 font-['Inter']" href="index.html">Home</a>
+            <a class="text-sm text-slate-500 hover:text-[#9A1D20] hover:underline dark:text-slate-400 font-['Inter']" href="kids.html">Kids</a>
+            <a class="text-sm text-slate-500 hover:text-[#9A1D20] hover:underline dark:text-slate-400 font-['Inter']" href="adults.html">Adults</a>
+            <a class="text-sm text-slate-500 hover:text-[#9A1D20] hover:underline dark:text-slate-400 font-['Inter']" href="about.html">About</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="mb-4 font-bold text-on-surface">Newsletter</h4>
+          <p class="mb-4 text-sm text-slate-500 dark:text-slate-400 font-['Inter']">Get updates on classes and events.</p>
+          <div class="flex gap-2">
+            <input class="w-full rounded-lg border-none bg-surface-container-high px-4 py-2 text-sm focus:ring-2 focus:ring-primary/40" placeholder="Email Address" type="email" />
+            <button class="rounded-lg bg-primary p-2 text-white" type="submit">
+              <span class="material-symbols-outlined">send</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-slate-200 pt-8 text-center dark:border-slate-800">
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-['Inter']">© 2024 Touch Point Judo Academy. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

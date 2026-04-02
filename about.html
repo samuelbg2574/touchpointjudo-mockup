@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us | Touch Point Judo Academy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#9a1d20",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-container": "#ccdafd",
+              "tertiary-fixed-dim": "#bcc6e7",
+              error: "#ba1a1a",
+              background: "#f9f9f9",
+              "on-tertiary-fixed": "#101b34",
+              "on-secondary-container": "#515f7d",
+              "on-primary-fixed": "#410004",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#394763",
+              "surface-variant": "#e2e2e2",
+              "surface-container-high": "#e8e8e8",
+              "surface-container-low": "#f3f3f4",
+              "inverse-primary": "#ffb3ad",
+              "tertiary-fixed": "#dae2ff",
+              "on-background": "#1a1c1c",
+              "primary-fixed-dim": "#ffb3ad",
+              "outline-variant": "#e1bfbc",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#2f3131",
+              "on-primary-container": "#ffaca5",
+              "surface-container": "#eeeeee",
+              primary: "#78000d",
+              "surface-tint": "#af2d2d",
+              "secondary-fixed-dim": "#b8c6e9",
+              "surface-bright": "#f9f9f9",
+              "on-tertiary-fixed-variant": "#3c4661",
+              tertiary: "#2e3852",
+              "inverse-on-surface": "#f0f1f1",
+              "primary-fixed": "#ffdad7",
+              "tertiary-container": "#454f6b",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed": "#0c1b35",
+              "on-tertiary-container": "#b7c1e2",
+              "on-error": "#ffffff",
+              "on-surface": "#1a1c1c",
+              secondary: "#505e7c",
+              "on-primary-fixed-variant": "#8e1319",
+              "surface-dim": "#dadada",
+              "secondary-fixed": "#d7e2ff",
+              outline: "#8d706e",
+              "on-secondary": "#ffffff",
+              surface: "#f9f9f9",
+              "on-surface-variant": "#59413f",
+              "on-primary": "#ffffff"
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"]
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .kinetic-photo-frame {
+        position: relative;
+      }
+
+      .kinetic-photo-frame::after {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border: 2px solid #e1bfbc;
+        border-radius: 9999px;
+        z-index: -1;
+      }
+
+      .desaturated-headshot {
+        filter: saturate(0.7) contrast(1.05);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-primary">
+    <nav class="sticky top-0 z-50 border-none bg-white/80 shadow-sm backdrop-blur-xl dark:bg-slate-900/80">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-8 py-4">
+        <a class="text-xl font-black tracking-tight text-[#78000D] font-['Plus_Jakarta_Sans']" href="index.html">Touch Point Judo Academy</a>
+
+        <div class="hidden items-center gap-8 font-['Plus_Jakarta_Sans'] font-bold tracking-tight md:flex">
+          <a class="text-slate-600 transition-colors hover:text-[#9A1D20] dark:text-slate-400" href="index.html">Home</a>
+          <a class="text-slate-600 transition-colors hover:text-[#9A1D20] dark:text-slate-400" href="kids.html">Kids</a>
+          <a class="text-slate-600 transition-colors hover:text-[#9A1D20] dark:text-slate-400" href="adults.html">Adults</a>
+          <a aria-current="page" class="border-b-2 border-[#9A1D20] pb-1 text-[#9A1D20]" href="about.html">About</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a class="hidden rounded-full bg-gradient-to-r from-primary to-primary-container px-6 py-2.5 text-sm font-bold tracking-tight text-white shadow-md transition-all duration-300 md:inline-flex" href="#visit">
+            Free Trial
+          </a>
+          <button
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+            class="text-on-surface md:hidden"
+            data-menu-toggle
+            type="button"
+          >
+            <span class="material-symbols-outlined text-3xl">menu</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden border-t border-slate-200/70 bg-white/95 px-8 py-4 md:hidden" data-mobile-menu>
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+          <a class="text-slate-600" href="index.html">Home</a>
+          <a class="text-slate-600" href="kids.html">Kids</a>
+          <a class="text-slate-600" href="adults.html">Adults</a>
+          <a aria-current="page" class="text-[#9A1D20]" href="about.html">About</a>
+          <a class="rounded-full bg-gradient-to-r from-primary to-primary-container px-6 py-3 text-center text-white" href="#visit">
+            Free Trial
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="relative flex min-h-[819px] items-center overflow-hidden pt-12">
+        <div class="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-12">
+          <div class="z-10 lg:col-span-6">
+            <span class="mb-6 inline-block rounded-full bg-secondary-fixed px-3 py-1 text-xs font-bold uppercase tracking-widest text-on-secondary-fixed font-label">
+              Established 2012
+            </span>
+            <h1 class="mb-8 font-headline text-5xl font-extrabold leading-[0.95] tracking-tighter text-on-surface md:text-7xl">
+              Our Academy,<br />
+              <span class="italic text-primary">Our Community</span>
+            </h1>
+            <p class="mb-10 max-w-lg text-lg leading-relaxed text-secondary">
+              More than just a dojo. We are a family of martial artists dedicated to the principles of Maximum Efficiency and Mutual Benefit. Join a legacy of excellence in the heart of our city.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a class="rounded-full bg-gradient-to-br from-primary to-primary-container px-8 py-4 font-headline font-bold tracking-tight text-white shadow-xl transition-all hover:shadow-2xl" href="kids.html">
+                Explore Our Programs
+              </a>
+              <a class="rounded-full bg-surface-container-highest px-8 py-4 font-headline font-bold tracking-tight text-on-secondary-container transition-all hover:bg-surface-container-high" href="kids.html#class-structure">
+                View Schedule
+              </a>
+            </div>
+          </div>
+
+          <div class="relative lg:col-span-6">
+            <div class="relative aspect-[4/5] overflow-hidden rounded-xl shadow-2xl">
+              <img
+                alt="Authentic candid moment of a diverse group of judo students and instructors sharing a laugh on the mats"
+                class="h-full w-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0jIzY7qJkHNKrfsCw8roYRtRZGieo--jYCe-2U7XHLpNXbgiehO4fgsZCEUxAeTXTFevhV41HkRocgLB1P1YnOGXDmCOGEjT-XTHrXQpuEUu6m-rgsyKoAMaFuuSwXpIhr7mv2EtDiJr5QLnb5pPc1K1DqBrAKyTrhMimJ97x8xfMtp0LfLY6tzFvyTok8UI1t3163YRG_ZA466j0o_O_eGYVKiXhEXs4vIcMVQGYjdCQVFij75GscMfXJle38d6VPph-v7EU9Qk"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            </div>
+
+            <div class="absolute -bottom-6 -left-6 hidden max-w-[200px] rounded-xl bg-white p-6 shadow-lg md:block">
+              <div class="mb-2 flex items-center gap-1 text-primary">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-xs font-bold font-headline">"The best community for growing athletes in the region."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-surface-container-low py-24">
+        <div class="mx-auto max-w-7xl px-8">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div class="flex flex-col justify-center rounded-xl bg-surface-container-lowest p-12 md:col-span-2">
+              <h2 class="mb-6 font-headline text-3xl font-bold tracking-tight">Our Mission &amp; Values</h2>
+              <p class="text-xl leading-relaxed text-on-surface-variant">
+                Touch Point Judo Academy was founded on the principle of <span class="font-bold text-primary">Jita Kyoei</span> (Mutual Benefit and Welfare). Our goal is to forge resilient spirits and capable bodies through the traditional art of Judo, fostering a safe environment where every student can reach their highest potential.
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center justify-center rounded-xl bg-primary p-12 text-center text-white">
+              <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
+                <span class="material-symbols-outlined text-3xl">diversity_3</span>
+              </div>
+              <h3 class="mb-4 font-headline text-2xl font-bold">Integrity First</h3>
+              <p class="text-sm text-on-primary-container">Character development is at the heart of everything we do, on and off the mat.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24">
+        <div class="mx-auto max-w-7xl px-8">
+          <div class="mb-16 text-center">
+            <h2 class="mb-4 font-headline text-4xl font-extrabold tracking-tight">Meet Our Sensei</h2>
+            <p class="mx-auto max-w-2xl text-secondary">Learn from world-class instructors with over 50 years of combined competitive and teaching experience.</p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+            <div class="text-center">
+              <div class="kinetic-photo-frame mx-auto mb-8 h-48 w-48">
+                <img
+                  alt="Professional desaturated headshot of Sensei David Chen in a traditional judo uniform"
+                  class="h-full w-full rounded-full object-cover desaturated-headshot"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrtioFoKOmjIdGhCejxOaEo8tiFDxBJtGNJgdjSynxWvSypbvCznNpH20qD7-5Nzbl-uhCsko7u2b2Eoa-cl6rPNY9NbVaVrMoBNfhwz7eWvvty-Fa7JSQqnOYOWnVElt0u_uno-ohEjwchcgLg2KxcshFSBoQgCZVbeXRlEDJnrOsZqyrIn_x17yIos6M6db-qebTyw_EwaVDShiMGp950QDCxu1PPqEdz6U6JoT4jDl6Bx9nyoxFO1thiKRuBSI-jElQdqsR-u4"
+                />
+              </div>
+              <h4 class="font-headline text-xl font-bold">Sensei David Chen</h4>
+              <p class="mb-4 text-sm font-bold text-primary">Head Instructor (6th Dan)</p>
+              <p class="px-4 text-sm text-on-surface-variant">Former Olympic alternate with a passion for youth development.</p>
+            </div>
+
+            <div class="text-center">
+              <div class="kinetic-photo-frame mx-auto mb-8 h-48 w-48">
+                <img
+                  alt="Expert profile of Sensei Sarah Miller in a white judo gi"
+                  class="h-full w-full rounded-full object-cover desaturated-headshot"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9Yb7K1hQzXOXqkAvEQjIAp059V9OiVJ1J1bbKcjFwqothAnlSV9DEvAWOr_mv7osXdYyx7zFl79bAQLzxjsr6_vc3PpTAnGPq4XB7oDvE6_inblJn5z3klWYJSLqr1Zl_UbTeUwX3BQnqScthPqI8DWuNeslIBdxZpY1a_3SZWMAQtzZ8kJjQPYu579yZOoCNqpZtazc29GMbLNMKv5-gBLR4xqbFd_dyVoZqTMJwLboPKb4llT8cgmLdgz9t_V-f4NUNjLkrybQ"
+                />
+              </div>
+              <h4 class="font-headline text-xl font-bold">Sensei Sarah Miller</h4>
+              <p class="mb-4 text-sm font-bold text-primary">Elite Coach (4th Dan)</p>
+              <p class="px-4 text-sm text-on-surface-variant">Specializing in competitive technical groundwork and transition.</p>
+            </div>
+
+            <div class="text-center">
+              <div class="kinetic-photo-frame mx-auto mb-8 h-48 w-48">
+                <img
+                  alt="Professional portrait of Sensei Marcus Thorne capturing decades of judo expertise"
+                  class="h-full w-full rounded-full object-cover desaturated-headshot"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAte8ZfYC5ENwx89_R_IGJXcRuNvn3RyHzKgsiL_rRjEhE_1seFNWgXTQ6FTqgox2nGfbB7DbrCI2Bq-WEcIGvoomEZcazk_rv727yRYd1k7ql5OMYYpda2Swz01ZGj02qvAl8DMm2zcfD95AnGNpChWfNBlc4ZnJGuuP8AJC6m_8H-cCTGMy6ug_bvL8JA3igMvUqabgk-xWyns4bhXRN-SRIsE9FnLDu8QbPMtBM68cE9tjETHmt6KPhuD5ZZubwgcIQMO5zSIrk"
+                />
+              </div>
+              <h4 class="font-headline text-xl font-bold">Sensei Marcus Thorne</h4>
+              <p class="mb-4 text-sm font-bold text-primary">Adult Programs (5th Dan)</p>
+              <p class="px-4 text-sm text-on-surface-variant">Focuses on technical fundamentals and physical conditioning.</p>
+            </div>
+
+            <div class="text-center">
+              <div class="kinetic-photo-frame mx-auto mb-8 h-48 w-48">
+                <img
+                  alt="Warm professional headshot of Coach Lisa Ray in her judo attire"
+                  class="h-full w-full rounded-full object-cover desaturated-headshot"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuArpvxphAJpmWr3zQd4Q4y9DXoZDQpJ_gzpHeyLtOCHhDrJ7bCccSKrO4Y3A4WV-0KDnb1-m-ti2UTd78aQhdK4Jb4Eczjywu331a3uh3sHlTuO8xaDbUecM3SRaJPUMM31GAjdcIGQJDcCsGGorTFQ7qluVbngqt9iFCqhoBKamZBYntZqN6oTcFYR33YI6a54UGtREZ821lATxZGTVoYkb3bvmNR3Pp5Vto6KioTF2144GO-xZ5jbNWHiqsV-7kSxVp8jhx6w4yA"
+                />
+              </div>
+              <h4 class="font-headline text-xl font-bold">Coach Lisa Ray</h4>
+              <p class="mb-4 text-sm font-bold text-primary">Kids Lead (2nd Dan)</p>
+              <p class="px-4 text-sm text-on-surface-variant">Creating a fun, high-energy environment for our youngest judokas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="overflow-hidden bg-surface-container-low py-24">
+        <div class="relative mx-auto max-w-7xl px-8">
+          <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+            <div class="relative order-2 lg:order-1">
+              <div class="absolute -right-12 -top-12 h-64 w-64 rounded-full bg-primary/5 blur-3xl"></div>
+              <img
+                alt="Clean, well-lit professional dojo interior showing high-quality tatami mats and spacious training area"
+                class="relative z-10 h-auto w-full rounded-xl shadow-2xl"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqM0aaIT8hBVwMZTsjous4wnsL7YOTWQwsDxew7R2QzCLK2hNPwB6oy1MJ2h5fvryPecl-ifFnCb4hbUfnERFunkuSS1i47PyDBU-rZWr7jw6R8_2MbHTKY7HXO_QHikJ_rDenLAydhCoCHbWk_DXfb1G2K6XrdlEETmJOjFQZq547Z_YxazpKh0nxvEc5e4BR8gGRb_REciM3fs2xKBUnBT0B1X_woZbe74WfKF7k0pR6elfmupPXXg_JrhsPwSX1-zaV9Rkwsxo"
+              />
+              <div class="absolute -bottom-8 -right-8 z-20 hidden h-48 w-48 rounded-xl bg-white p-4 shadow-xl md:block">
+                <img
+                  alt="Detailed close-up of traditional judo equipment and neatly folded uniforms"
+                  class="h-full w-full rounded-lg object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuByBleTJo44rdmuNmDPfIfkrg-bE6lZHXmh6YpDXyj_Mggj1jV9KJ_HQG2SPo7KeaPEFFQ2Z1jQrJMilZJEuph1HNuzgu78yPFgxZ9bfuOmwHZiVtdyya4mKQbeiP_Jb87N4MqnF5y4EUSgQinszQ0ISYYEtdpke5X5kCxkex_irzVc_abbqLuLu1d4RwkMQO47fmpB91uyY_TbUVQV8jlezZjGEXfPYHiJG9xxt9ESW6ClQq62ab_6uXV0gayT-tRtDa_agcO2rvI"
+                />
+              </div>
+            </div>
+
+            <div class="order-1 lg:order-2">
+              <h2 class="mb-8 font-headline text-4xl font-extrabold tracking-tight">World-Class Dojo Environment</h2>
+              <ul class="space-y-6">
+                <li class="flex gap-4">
+                  <span class="material-symbols-outlined h-fit rounded-full bg-primary-fixed p-2 text-primary">check_circle</span>
+                  <div>
+                    <h5 class="font-bold font-headline">Olympic Standard Mats</h5>
+                    <p class="text-sm text-on-surface-variant">Professional-grade tatami with high impact absorption for maximum safety during throws.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="material-symbols-outlined h-fit rounded-full bg-primary-fixed p-2 text-primary">check_circle</span>
+                  <div>
+                    <h5 class="font-bold font-headline">Modern Amenities</h5>
+                    <p class="text-sm text-on-surface-variant">Spacious changing rooms, clean showers, and a comfortable viewing area for parents.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="material-symbols-outlined h-fit rounded-full bg-primary-fixed p-2 text-primary">check_circle</span>
+                  <div>
+                    <h5 class="font-bold font-headline">Dedicated S&amp;C Zone</h5>
+                    <p class="text-sm text-on-surface-variant">A specialized strength and conditioning area tailored for martial arts functional training.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24" id="visit">
+        <div class="mx-auto max-w-7xl px-8">
+          <div class="flex flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm lg:flex-row">
+            <div class="bg-tertiary p-12 text-white lg:w-1/3">
+              <h3 class="mb-8 font-headline text-3xl font-bold">Visit Us</h3>
+              <div class="space-y-8">
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-tertiary-fixed-dim">location_on</span>
+                  <div>
+                    <p class="mb-1 text-lg font-bold">Our Location</p>
+                    <p class="text-on-tertiary-container">Parkham Street<br />Battersea, London SW11 3DQ</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-tertiary-fixed-dim">call</span>
+                  <div>
+                    <p class="mb-1 text-lg font-bold">Call Us</p>
+                    <p class="text-on-tertiary-container">(555) 123-4567</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-tertiary-fixed-dim">mail</span>
+                  <div>
+                    <p class="mb-1 text-lg font-bold">Email Us</p>
+                    <p class="text-on-tertiary-container">hello@touchpointjudo.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative min-h-[400px] bg-slate-100 lg:w-2/3">
+              <iframe
+                allowfullscreen
+                class="h-full min-h-[400px] w-full"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Touch%20Point%20Judo%20Academy%2C%20Parkham%20Street%2C%20Battersea%2C%20London%20SW11%203DQ&amp;z=15&amp;output=embed"
+                title="Touch Point Judo Academy location on Google Maps"
+              ></iframe>
+              <a
+                class="absolute right-4 top-4 rounded-full bg-white/95 px-4 py-2 text-sm font-bold text-primary shadow-lg transition-colors hover:bg-white"
+                href="https://share.google/OKR2axCRTulyUSgrq"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Open in Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="w-full bg-slate-100 pt-12 pb-8 dark:bg-slate-950">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-8 md:grid-cols-3">
+        <div class="flex flex-col gap-4">
+          <span class="text-lg font-bold text-[#78000D] font-['Plus_Jakarta_Sans']">Touch Point Judo Academy</span>
+          <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400 font-['Inter']">
+            Building confidence, character, and community through the art of Judo since 2012. Join us for a session today.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h4 class="text-sm font-bold uppercase tracking-widest text-[#78000D] font-headline">Quick Links</h4>
+          <div class="flex flex-col gap-2 text-sm font-['Inter']">
+            <a class="text-slate-500 transition-opacity hover:text-[#9A1D20] hover:underline dark:text-slate-400" href="index.html">Home</a>
+            <a class="text-slate-500 transition-opacity hover:text-[#9A1D20] hover:underline dark:text-slate-400" href="kids.html">Kids</a>
+            <a class="text-slate-500 transition-opacity hover:text-[#9A1D20] hover:underline dark:text-slate-400" href="adults.html">Adults</a>
+            <a class="text-slate-500 transition-opacity hover:text-[#9A1D20] hover:underline dark:text-slate-400" href="#visit">Visit Us</a>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h4 class="text-sm font-bold uppercase tracking-widest text-[#78000D] font-headline">Connect</h4>
+          <div class="flex gap-4">
+            <a class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#78000D] transition-transform hover:scale-110 dark:bg-slate-800" href="index.html">
+              <span class="material-symbols-outlined text-[20px]">home</span>
+            </a>
+            <a class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#78000D] transition-transform hover:scale-110 dark:bg-slate-800" href="mailto:hello@touchpointjudo.com">
+              <span class="material-symbols-outlined text-[20px]">mail</span>
+            </a>
+            <a class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#78000D] transition-transform hover:scale-110 dark:bg-slate-800" href="#visit">
+              <span class="material-symbols-outlined text-[20px]">location_on</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-7xl border-t border-slate-200 px-8 pt-8 text-center dark:border-slate-800">
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-['Inter']">© 2024 Touch Point Judo Academy. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
