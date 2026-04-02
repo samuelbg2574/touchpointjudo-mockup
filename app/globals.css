@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-lightest text-ink font-body antialiased;
+  }
+
+  ::selection {
+    @apply bg-crimson/20 text-crimson;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .mask-radial {
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  }
+}
