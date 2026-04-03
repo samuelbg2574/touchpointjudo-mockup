@@ -157,7 +157,7 @@ export default function TimetablePage() {
             transition={{ duration: 0.5 }}
             className="mb-5 inline-block rounded-full bg-crimson/10 px-4 py-1.5 font-headline text-xs font-bold uppercase tracking-widest text-crimson"
           >
-            2025 Schedule
+            2026 Schedule
           </motion.span>
 
           <motion.h1
