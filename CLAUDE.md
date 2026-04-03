@@ -2,7 +2,7 @@
 
 ## Project
 - Next.js 14 App Router, TypeScript, Tailwind CSS, Framer Motion
-- Static site (no API routes, no database)
+- Mostly static site with two dynamic API routes (`/api/classes`, `/api/booking`)
 - Deployed from `main` branch
 - Repo: https://github.com/samuelbg2574/touchpointjudo-mockup.git
 
@@ -26,6 +26,21 @@
 - Contact constants in `lib/utils.ts` (email, phone, WhatsApp)
 - Images: mix of `lh3.googleusercontent.com` and `images.unsplash.com`
 - Remote image domains configured in `next.config.js`
+
+## Airtable Integration
+- `lib/airtable.ts` — fetches classes and creates booking records
+- Requires `.env.local` with `AIRTABLE_TOKEN` and `AIRTABLE_BASE_ID`
+- Timetable falls back to hardcoded schedule if Airtable creds are missing
+- Two Airtable tables needed: `Classes` (timetable) and `Bookings` (form submissions)
+- Bookings table fields: Name, Email, Phone, Day, Time, Class, Age Group, Category, Status, Submitted At
+- See `.env.example` for setup instructions
+
+## Remaining TODOs
+- [ ] **Owner: set up Airtable base** — create `Classes` and `Bookings` tables per `.env.example` instructions
+- [ ] **Owner: add `.env.local`** — add `AIRTABLE_TOKEN` and `AIRTABLE_BASE_ID` to production environment variables (Vercel/Netlify dashboard)
+- [ ] **Email notifications** — optionally wire up Resend/SendGrid so owner gets an email when a new booking comes in (commented-out scaffold exists in `app/api/booking/route.ts`)
+- [ ] **Booking confirmations** — send an automated reply email to the person who booked
+- [ ] **Cancellation flag** — add a `cancelled` boolean field to Airtable `Classes` table so owner can mark a class cancelled and it shows as such on the site (currently status options are available/limited/enrolling)
 
 ## Preferences
 - Always build (`npm run build`) before pushing

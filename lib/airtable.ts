@@ -16,6 +16,56 @@ export interface ClassEntry {
   duration: string;
 }
 
+export interface BookingRecord {
+  name: string;
+  email: string;
+  phone?: string;
+  classDay: string;
+  classTime: string;
+  classEndTime: string;
+  classProgram: string;
+  classAgeGroup: string;
+  classCategory: string;
+}
+
+export async function createBooking(booking: BookingRecord): Promise<void> {
+  if (!TOKEN || !BASE_ID) {
+    throw new Error("Airtable credentials missing");
+  }
+
+  const url = `${AIRTABLE_API_BASE}/${BASE_ID}/Bookings`;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      records: [
+        {
+          fields: {
+            Name: booking.name,
+            Email: booking.email,
+            Phone: booking.phone || "",
+            Day: booking.classDay,
+            Time: `${booking.classTime} – ${booking.classEndTime}`,
+            Class: booking.classProgram,
+            "Age Group": booking.classAgeGroup,
+            Category: booking.classCategory,
+            Status: "New",
+            "Submitted At": new Date().toISOString(),
+          },
+        },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`Airtable error: ${JSON.stringify(error)}`);
+  }
+}
+
 export async function fetchClasses(): Promise<ClassEntry[]> {
   if (!TOKEN || !BASE_ID) {
     console.warn("Airtable credentials missing. Using fallback data.");

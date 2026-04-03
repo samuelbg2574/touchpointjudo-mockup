@@ -14,10 +14,11 @@ export function BookingForm({ classes }: BookingFormProps) {
     name: "",
     email: "",
     phone: "",
-    selectedClass: "",
+    selectedClassId: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -29,31 +30,52 @@ export function BookingForm({ classes }: BookingFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
+
+    const selectedClass = classes.find((c) => c.id === formData.selectedClassId);
+    if (!selectedClass) {
+      setError("Please select a class.");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          classDay: selectedClass.day,
+          classTime: selectedClass.time,
+          classEndTime: selectedClass.endTime,
+          classProgram: selectedClass.program,
+          classAgeGroup: selectedClass.ageGroup,
+          classCategory: selectedClass.category,
+        }),
       });
 
       if (response.ok) {
         setSubmitted(true);
-        setFormData({ name: "", email: "", phone: "", selectedClass: "" });
-        setTimeout(() => setSubmitted(false), 4000);
+        setFormData({ name: "", email: "", phone: "", selectedClassId: "" });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        setError("Something went wrong. Please try again.");
       }
-    } catch (error) {
-      console.error("Booking failed:", error);
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+      console.error("Booking failed:", err);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Group classes by day for dropdown
-  const classOptions = classes.map((cls) => ({
-    label: `${cls.day} - ${cls.time} ${cls.program} (${cls.ageGroup})`,
-    value: `${cls.day}-${cls.program}-${cls.time}`,
-  }));
+  // Sort classes by day order then time for the dropdown
+  const dayOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const sortedClasses = [...classes].sort(
+    (a, b) => dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day)
+  );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -106,16 +128,16 @@ export function BookingForm({ classes }: BookingFormProps) {
           Which class interests you?
         </label>
         <select
-          name="selectedClass"
-          value={formData.selectedClass}
+          name="selectedClassId"
+          value={formData.selectedClassId}
           onChange={handleChange}
           required
           className="w-full rounded-lg border border-ink/10 bg-surface-lightest px-4 py-2.5 text-sm text-ink transition-colors focus:border-crimson focus:outline-none focus:ring-2 focus:ring-crimson/20"
         >
           <option value="">Select a class...</option>
-          {classOptions.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
+          {sortedClasses.map((cls) => (
+            <option key={cls.id} value={cls.id}>
+              {cls.day} · {cls.time}–{cls.endTime} — {cls.program} ({cls.ageGroup})
             </option>
           ))}
         </select>
@@ -142,6 +164,10 @@ export function BookingForm({ classes }: BookingFormProps) {
           "Reserve Your Spot"
         )}
       </motion.button>
+
+      {error && (
+        <p className="text-sm text-red-600">{error}</p>
+      )}
 
       {submitted && (
         <p className="text-sm text-green-600">
