@@ -144,9 +144,9 @@ export default function TimetablePage() {
     async function loadClasses() {
       try {
         const response = await fetch("/api/classes");
-        if (response.ok) {
+        if (response.ok && response.status !== 204) {
           const data = await response.json();
-          setClasses(data);
+          setClasses(data.length > 0 ? data : fallbackClasses);
         } else {
           setClasses(fallbackClasses);
         }

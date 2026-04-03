@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { CONTACT_EMAIL } from "@/lib/utils";
 
 export async function POST(req: NextRequest) {
   try {
