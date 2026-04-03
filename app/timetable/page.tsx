@@ -1,150 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, ChevronRight, MapPin } from "lucide-react";
 import { ContactCTA } from "@/components/ContactCTA";
-import { WHATSAPP_URL } from "@/lib/utils";
+import { BookingForm } from "@/components/BookingForm";
+import type { ClassEntry } from "@/lib/airtable";
 
 type Filter = "all" | "kids" | "adults";
-
-interface ClassEntry {
-  id: number;
-  category: "kids" | "adults";
-  program: string;
-  ageGroup: string;
-  time: string;
-  end: string;
-  duration: string;
-  level: string;
-  status: "available" | "limited" | "enrolling";
-}
 
 interface DaySchedule {
   day: string;
   classes: ClassEntry[];
 }
-
-const schedule: DaySchedule[] = [
-  {
-    day: "Monday",
-    classes: [
-      {
-        id: 1,
-        category: "adults",
-        program: "Adult Beginner Course",
-        ageGroup: "18+",
-        time: "7:00 pm",
-        end: "8:30 pm",
-        duration: "90 min",
-        level: "Beginner",
-        status: "enrolling",
-      },
-    ],
-  },
-  {
-    day: "Tuesday",
-    classes: [
-      {
-        id: 2,
-        category: "kids",
-        program: "Little Tigers",
-        ageGroup: "Ages 4–7",
-        time: "4:30 pm",
-        end: "5:30 pm",
-        duration: "60 min",
-        level: "Beginner",
-        status: "limited",
-      },
-    ],
-  },
-  {
-    day: "Wednesday",
-    classes: [
-      {
-        id: 3,
-        category: "adults",
-        program: "Adult Beginner Course",
-        ageGroup: "18+",
-        time: "7:00 pm",
-        end: "8:30 pm",
-        duration: "90 min",
-        level: "Beginner",
-        status: "enrolling",
-      },
-    ],
-  },
-  {
-    day: "Thursday",
-    classes: [
-      {
-        id: 4,
-        category: "kids",
-        program: "Young Samurais",
-        ageGroup: "Ages 8–12",
-        time: "5:00 pm",
-        end: "6:15 pm",
-        duration: "75 min",
-        level: "Intermediate",
-        status: "available",
-      },
-    ],
-  },
-  {
-    day: "Friday",
-    classes: [
-      {
-        id: 5,
-        category: "adults",
-        program: "Open Mat",
-        ageGroup: "18+",
-        time: "7:00 pm",
-        end: "8:30 pm",
-        duration: "90 min",
-        level: "All levels",
-        status: "available",
-      },
-    ],
-  },
-  {
-    day: "Saturday",
-    classes: [
-      {
-        id: 6,
-        category: "kids",
-        program: "Little Tigers",
-        ageGroup: "Ages 4–7",
-        time: "9:00 am",
-        end: "10:00 am",
-        duration: "60 min",
-        level: "Beginner",
-        status: "limited",
-      },
-      {
-        id: 7,
-        category: "kids",
-        program: "Young Samurais",
-        ageGroup: "Ages 8–12",
-        time: "10:15 am",
-        end: "11:30 am",
-        duration: "75 min",
-        level: "Intermediate",
-        status: "available",
-      },
-      {
-        id: 8,
-        category: "adults",
-        program: "Advanced Training",
-        ageGroup: "18+",
-        time: "12:00 pm",
-        end: "1:30 pm",
-        duration: "90 min",
-        level: "Advanced",
-        status: "available",
-      },
-    ],
-  },
-];
 
 const statusConfig = {
   available: {
@@ -167,8 +35,152 @@ const filters: { value: Filter; label: string }[] = [
   { value: "adults", label: "Adult Programs" },
 ];
 
+// Fallback schedule for when Airtable is not available
+const fallbackClasses: ClassEntry[] = [
+  {
+    id: "1",
+    category: "adults",
+    program: "Adult Beginner Course",
+    ageGroup: "18+",
+    time: "7:00 pm",
+    endTime: "8:30 pm",
+    duration: "90 min",
+    level: "Beginner",
+    status: "enrolling",
+    day: "Monday",
+  },
+  {
+    id: "2",
+    category: "kids",
+    program: "Little Tigers",
+    ageGroup: "Ages 4–7",
+    time: "4:30 pm",
+    endTime: "5:30 pm",
+    duration: "60 min",
+    level: "Beginner",
+    status: "limited",
+    day: "Tuesday",
+  },
+  {
+    id: "3",
+    category: "adults",
+    program: "Adult Beginner Course",
+    ageGroup: "18+",
+    time: "7:00 pm",
+    endTime: "8:30 pm",
+    duration: "90 min",
+    level: "Beginner",
+    status: "enrolling",
+    day: "Wednesday",
+  },
+  {
+    id: "4",
+    category: "kids",
+    program: "Young Samurais",
+    ageGroup: "Ages 8–12",
+    time: "5:00 pm",
+    endTime: "6:15 pm",
+    duration: "75 min",
+    level: "Intermediate",
+    status: "available",
+    day: "Thursday",
+  },
+  {
+    id: "5",
+    category: "adults",
+    program: "Open Mat",
+    ageGroup: "18+",
+    time: "7:00 pm",
+    endTime: "8:30 pm",
+    duration: "90 min",
+    level: "All levels",
+    status: "available",
+    day: "Friday",
+  },
+  {
+    id: "6",
+    category: "kids",
+    program: "Little Tigers",
+    ageGroup: "Ages 4–7",
+    time: "9:00 am",
+    endTime: "10:00 am",
+    duration: "60 min",
+    level: "Beginner",
+    status: "limited",
+    day: "Saturday",
+  },
+  {
+    id: "7",
+    category: "kids",
+    program: "Young Samurais",
+    ageGroup: "Ages 8–12",
+    time: "10:15 am",
+    endTime: "11:30 am",
+    duration: "75 min",
+    level: "Intermediate",
+    status: "available",
+    day: "Saturday",
+  },
+  {
+    id: "8",
+    category: "adults",
+    program: "Advanced Training",
+    ageGroup: "18+",
+    time: "12:00 pm",
+    endTime: "1:30 pm",
+    duration: "90 min",
+    level: "Advanced",
+    status: "available",
+    day: "Saturday",
+  },
+];
+
 export default function TimetablePage() {
   const [filter, setFilter] = useState<Filter>("all");
+  const [classes, setClasses] = useState<ClassEntry[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadClasses() {
+      try {
+        const response = await fetch("/api/classes");
+        if (response.ok) {
+          const data = await response.json();
+          setClasses(data);
+        } else {
+          setClasses(fallbackClasses);
+        }
+      } catch (error) {
+        console.warn("Failed to load classes, using fallback:", error);
+        setClasses(fallbackClasses);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadClasses();
+  }, []);
+
+  // Group classes by day
+  const scheduleByDay = (classes: ClassEntry[]): DaySchedule[] => {
+    const days = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+    return days
+      .map((day) => ({
+        day,
+        classes: classes.filter((c) => c.day === day),
+      }))
+      .filter((day) => day.classes.length > 0);
+  };
+
+  const schedule = scheduleByDay(classes);
 
   const visibleSchedule = schedule
     .map((day) => ({
@@ -338,7 +350,7 @@ export default function TimetablePage() {
                             <div className="mt-4 flex items-center gap-2 text-sm text-ink/55">
                               <Clock size={13} className="shrink-0 text-ink/35" />
                               <span className="font-medium">
-                                {cls.time} – {cls.end}
+                                {cls.time} – {cls.endTime}
                               </span>
                               <span className="text-xs text-ink/35">
                                 · {cls.duration}
@@ -346,22 +358,17 @@ export default function TimetablePage() {
                             </div>
 
                             {/* Book CTA */}
-                            <a
-                              href={WHATSAPP_URL}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`mt-4 inline-flex items-center gap-1 font-headline text-xs font-bold transition-all ${
-                                isKids
-                                  ? "text-crimson hover:text-crimson-dark"
-                                  : "text-navy hover:text-ink"
-                              }`}
-                            >
-                              Book this class
+                            <div className={`mt-4 inline-flex items-center gap-1 font-headline text-xs font-bold transition-all ${
+                              isKids
+                                ? "text-crimson"
+                                : "text-navy"
+                            }`}>
+                              <span>See form below</span>
                               <ChevronRight
                                 size={13}
-                                className="transition-transform duration-200 group-hover:translate-x-0.5"
+                                className="transition-transform duration-200"
                               />
-                            </a>
+                            </div>
                           </div>
                         </motion.div>
                       );
@@ -411,10 +418,43 @@ export default function TimetablePage() {
         </div>
       </section>
 
+      {/* ── Booking Form ──────────────────────────────────── */}
+      <section className="bg-surface-lightest py-16 md:py-28">
+        <div className="mx-auto max-w-2xl px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="font-headline text-3xl font-black text-ink md:text-5xl">
+              Ready to join?
+            </h2>
+            <p className="mt-3 text-lg text-ink/60">
+              Fill in your details and choose a class. We'll be in touch to confirm your booking.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-8 rounded-3xl bg-white p-8 ring-1 ring-ink/5 md:p-10"
+          >
+            {isLoading ? (
+              <div className="text-center py-8 text-ink/60">Loading form...</div>
+            ) : (
+              <BookingForm classes={classes} />
+            )}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── CTA ──────────────────────────────────────────── */}
       <ContactCTA
-        heading="Ready to step on the mat?"
-        subtext="Message us on WhatsApp and we'll find the perfect class for you or your child."
+        heading="Questions?"
+        subtext="Get in touch on WhatsApp or email us directly for any inquiries about our programs."
       />
     </>
   );
