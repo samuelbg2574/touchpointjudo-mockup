@@ -25,6 +25,7 @@ const statusConfig = {
   available: { label: "Available", text: "text-emerald-700", bg: "bg-emerald-50" },
   limited:   { label: "Limited",   text: "text-orange-600", bg: "bg-orange-50"  },
   enrolling: { label: "Enrolling", text: "text-crimson",    bg: "bg-crimson/10" },
+  full:      { label: "Full",      text: "text-ink/50",     bg: "bg-ink/5"      },
 };
 
 const filters: { value: Filter; label: string }[] = [
@@ -32,6 +33,18 @@ const filters: { value: Filter; label: string }[] = [
   { value: "kids",   label: "Kids"        },
   { value: "adults", label: "Adults"      },
 ];
+
+// Returns the next occurrence of a weekday name as a short date string e.g. "7 Apr"
+function nextDateForDay(dayName: string): string {
+  const targetIndex = DAY_ORDER.indexOf(dayName); // 0=Mon … 6=Sun
+  const today = new Date();
+  // JS getDay(): 0=Sun,1=Mon…6=Sat → convert to Mon-based index
+  const todayIndex = (today.getDay() + 6) % 7;
+  const diff = (targetIndex - todayIndex + 7) % 7;
+  const target = new Date(today);
+  target.setDate(today.getDate() + diff);
+  return target.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+}
 
 function timeToMinutes(time: string): number {
   const lower = time.toLowerCase().trim();
@@ -239,6 +252,12 @@ export default function TimetablePage() {
                 >
                   <span className={`text-[10px] font-extrabold uppercase tracking-widest ${isSelected ? "text-white/60" : "text-ink/40"}`}>
                     {DAY_SHORT[day]}
+                  </span>
+                  <span className={`mt-0.5 text-xs font-semibold ${isSelected ? "text-white" : hasClasses ? "text-ink/70" : "text-ink/20"}`}>
+                    {nextDateForDay(day).split(" ")[0]}
+                  </span>
+                  <span className={`text-[10px] ${isSelected ? "text-white/50" : hasClasses ? "text-ink/40" : "text-ink/15"}`}>
+                    {nextDateForDay(day).split(" ")[1]}
                   </span>
                   {isToday && (
                     <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-crimson ring-2 ring-white" />

@@ -12,8 +12,9 @@ export interface ClassEntry {
   category: "kids" | "adults";
   ageGroup: string;
   level: string;
-  status: "available" | "limited" | "enrolling";
+  status: "available" | "limited" | "enrolling" | "full";
   duration: string;
+  capacity?: number;
 }
 
 export interface BookingRecord {
@@ -98,9 +99,49 @@ export async function fetchClasses(): Promise<ClassEntry[]> {
       level: record.fields.level || "",
       status: record.fields.status || "available",
       duration: record.fields.duration || "",
+      capacity: record.fields.capacity ? Number(record.fields.capacity) : undefined,
     }));
   } catch (error) {
     console.error("Failed to fetch from Airtable:", error);
     return [];
+  }
+}
+
+// Returns a map of "Day|Program" → confirmed booking count (excludes Cancelled)
+export async function fetchBookingCounts(): Promise<Record<string, number>> {
+  if (!TOKEN || !BASE_ID) return {};
+
+  try {
+    const params = new URLSearchParams({
+      "fields[]": "Day",
+      filterByFormula: "NOT({Status}='Cancelled')",
+      maxRecords: "1000",
+    });
+    // Airtable requires repeated keys for multiple fields[]
+    params.append("fields[]", "Class");
+
+    const url = `${AIRTABLE_API_BASE}/${BASE_ID}/Bookings?${params.toString()}`;
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${TOKEN}` },
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) return {};
+
+    const data = await res.json();
+    const counts: Record<string, number> = {};
+
+    for (const record of data.records) {
+      const day = record.fields.Day || "";
+      const cls = record.fields.Class || "";
+      if (day && cls) {
+        const key = `${day}|${cls}`;
+        counts[key] = (counts[key] || 0) + 1;
+      }
+    }
+
+    return counts;
+  } catch {
+    return {};
   }
 }
