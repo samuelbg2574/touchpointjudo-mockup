@@ -9,181 +9,127 @@ import type { ClassEntry } from "@/lib/airtable";
 
 type Filter = "all" | "kids" | "adults";
 
+const DAY_ORDER = [
+  "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday",
+];
+const DAY_SHORT: Record<string, string> = {
+  Monday: "Mon", Tuesday: "Tue", Wednesday: "Wed",
+  Thursday: "Thu", Friday: "Fri", Saturday: "Sat", Sunday: "Sun",
+};
+const JS_DAY_MAP: Record<number, string> = {
+  0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday",
+  4: "Thursday", 5: "Friday", 6: "Saturday",
+};
+
 const statusConfig = {
-  available: {
-    label: "Available",
-    className: "bg-green-50 text-green-700 border-green-200",
-  },
-  limited: {
-    label: "Limited",
-    className: "bg-orange-50 text-orange-600 border-orange-200",
-  },
-  enrolling: {
-    label: "Enrolling",
-    className: "bg-crimson/10 text-crimson border-crimson/30",
-  },
+  available: { label: "Available", text: "text-emerald-700", bg: "bg-emerald-50" },
+  limited:   { label: "Limited",   text: "text-orange-600", bg: "bg-orange-50"  },
+  enrolling: { label: "Enrolling", text: "text-crimson",    bg: "bg-crimson/10" },
 };
 
 const filters: { value: Filter; label: string }[] = [
-  { value: "all", label: "All Classes" },
-  { value: "kids", label: "Kids Programs" },
-  { value: "adults", label: "Adult Programs" },
+  { value: "all",    label: "All Classes" },
+  { value: "kids",   label: "Kids"        },
+  { value: "adults", label: "Adults"      },
 ];
 
-// Fallback schedule
+function timeToMinutes(time: string): number {
+  const lower = time.toLowerCase().trim();
+  const isPm = lower.includes("pm");
+  const cleaned = lower.replace(/[apm\s]/g, "");
+  const [h, m = "0"] = cleaned.split(":");
+  let hours = parseInt(h);
+  if (isPm && hours !== 12) hours += 12;
+  if (!isPm && hours === 12) hours = 0;
+  return hours * 60 + parseInt(m);
+}
+
 const fallbackClasses: ClassEntry[] = [
-  {
-    id: "1",
-    category: "adults",
-    program: "Adult Beginner Course",
-    ageGroup: "18+",
-    time: "7:00 pm",
-    endTime: "8:30 pm",
-    duration: "90 min",
-    level: "Beginner",
-    status: "enrolling",
-    day: "Monday",
-  },
-  {
-    id: "2",
-    category: "kids",
-    program: "Little Tigers",
-    ageGroup: "Ages 4–7",
-    time: "4:30 pm",
-    endTime: "5:30 pm",
-    duration: "60 min",
-    level: "Beginner",
-    status: "limited",
-    day: "Tuesday",
-  },
-  {
-    id: "3",
-    category: "adults",
-    program: "Adult Beginner Course",
-    ageGroup: "18+",
-    time: "7:00 pm",
-    endTime: "8:30 pm",
-    duration: "90 min",
-    level: "Beginner",
-    status: "enrolling",
-    day: "Wednesday",
-  },
-  {
-    id: "4",
-    category: "kids",
-    program: "Young Samurais",
-    ageGroup: "Ages 8–12",
-    time: "5:00 pm",
-    endTime: "6:15 pm",
-    duration: "75 min",
-    level: "Intermediate",
-    status: "available",
-    day: "Thursday",
-  },
-  {
-    id: "5",
-    category: "adults",
-    program: "Open Mat",
-    ageGroup: "18+",
-    time: "7:00 pm",
-    endTime: "8:30 pm",
-    duration: "90 min",
-    level: "All levels",
-    status: "available",
-    day: "Friday",
-  },
-  {
-    id: "6",
-    category: "kids",
-    program: "Little Tigers",
-    ageGroup: "Ages 4–7",
-    time: "9:00 am",
-    endTime: "10:00 am",
-    duration: "60 min",
-    level: "Beginner",
-    status: "limited",
-    day: "Saturday",
-  },
-  {
-    id: "7",
-    category: "kids",
-    program: "Young Samurais",
-    ageGroup: "Ages 8–12",
-    time: "10:15 am",
-    endTime: "11:30 am",
-    duration: "75 min",
-    level: "Intermediate",
-    status: "available",
-    day: "Saturday",
-  },
-  {
-    id: "8",
-    category: "adults",
-    program: "Advanced Training",
-    ageGroup: "18+",
-    time: "12:00 pm",
-    endTime: "1:30 pm",
-    duration: "90 min",
-    level: "Advanced",
-    status: "available",
-    day: "Saturday",
-  },
+  { id: "1", category: "adults", program: "Adult Beginner Course", ageGroup: "18+",       time: "7:00 pm",  endTime: "8:30 pm",  duration: "90 min", level: "Beginner",     status: "enrolling", day: "Monday"    },
+  { id: "2", category: "kids",   program: "Little Tigers",         ageGroup: "Ages 4–7",  time: "4:30 pm",  endTime: "5:30 pm",  duration: "60 min", level: "Beginner",     status: "limited",   day: "Tuesday"   },
+  { id: "3", category: "adults", program: "Adult Beginner Course", ageGroup: "18+",       time: "7:00 pm",  endTime: "8:30 pm",  duration: "90 min", level: "Beginner",     status: "enrolling", day: "Wednesday" },
+  { id: "4", category: "kids",   program: "Young Samurais",        ageGroup: "Ages 8–12", time: "5:00 pm",  endTime: "6:15 pm",  duration: "75 min", level: "Intermediate", status: "available", day: "Thursday"  },
+  { id: "5", category: "adults", program: "Open Mat",              ageGroup: "18+",       time: "7:00 pm",  endTime: "8:30 pm",  duration: "90 min", level: "All levels",   status: "available", day: "Friday"    },
+  { id: "6", category: "kids",   program: "Little Tigers",         ageGroup: "Ages 4–7",  time: "9:00 am",  endTime: "10:00 am", duration: "60 min", level: "Beginner",     status: "limited",   day: "Saturday"  },
+  { id: "7", category: "kids",   program: "Young Samurais",        ageGroup: "Ages 8–12", time: "10:15 am", endTime: "11:30 am", duration: "75 min", level: "Intermediate", status: "available", day: "Saturday"  },
+  { id: "8", category: "adults", program: "Advanced Training",     ageGroup: "18+",       time: "12:00 pm", endTime: "1:30 pm",  duration: "90 min", level: "Advanced",     status: "available", day: "Saturday"  },
 ];
+
+// Skeleton pulse rows
+function SkeletonCards() {
+  return (
+    <div className="space-y-3">
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="flex overflow-hidden rounded-2xl bg-surface-lightest ring-1 ring-ink/5 animate-pulse">
+          <div className="w-1 shrink-0 bg-ink/10" />
+          <div className="flex flex-1 flex-col gap-3 px-5 py-5">
+            <div className="h-7 w-28 rounded-lg bg-ink/8" />
+            <div className="h-4 w-48 rounded-lg bg-ink/6" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function TimetablePage() {
-  const [filter, setFilter] = useState<Filter>("all");
-  const [classes, setClasses] = useState<ClassEntry[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const todayName = JS_DAY_MAP[new Date().getDay()];
+
+  const [filter, setFilter]         = useState<Filter>("all");
+  const [selectedDay, setSelectedDay] = useState<string>(
+    DAY_ORDER.includes(todayName) ? todayName : "Monday"
+  );
+  const [classes, setClasses]       = useState<ClassEntry[]>([]);
+  const [isLoading, setIsLoading]   = useState(true);
 
   useEffect(() => {
     async function loadClasses() {
       try {
-        const response = await fetch("/api/classes");
-        if (response.ok && response.status !== 204) {
-          const data = await response.json();
+        const res = await fetch("/api/classes");
+        if (res.ok && res.status !== 204) {
+          const data = await res.json();
           setClasses(data.length > 0 ? data : fallbackClasses);
         } else {
           setClasses(fallbackClasses);
         }
-      } catch (error) {
-        console.warn("Failed to load classes, using fallback:", error);
+      } catch {
         setClasses(fallbackClasses);
       } finally {
         setIsLoading(false);
       }
     }
-
     loadClasses();
   }, []);
 
-  // Filter classes
   const filteredClasses = classes.filter(
     (c) => filter === "all" || c.category === filter
   );
 
-  // Days of week
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  const daysWithClasses = days.filter((day) =>
+  const daysWithClasses = DAY_ORDER.filter((day) =>
     filteredClasses.some((c) => c.day === day)
   );
 
-  // Get unique times sorted
-  const uniqueTimes = Array.from(
-    new Set(filteredClasses.map((c) => c.time))
-  ).sort((a, b) => {
-    const timeToMinutes = (time: string) => {
-      const [hours, minutes] = time.toLowerCase().includes("pm")
-        ? [parseInt(time), parseInt(time)]
-        : [parseInt(time), parseInt(time)];
-      return hours * 60 + minutes;
-    };
-    return timeToMinutes(a) - timeToMinutes(b);
-  });
-
-  // Get class for a specific day and time
-  const getClassesForSlot = (day: string, time: string) => {
-    return filteredClasses.filter((c) => c.day === day && c.time === time);
+  // When filter changes, snap to first available day if current day has no classes
+  const handleFilterChange = (next: Filter) => {
+    setFilter(next);
+    const available = DAY_ORDER.filter((day) =>
+      classes
+        .filter((c) => next === "all" || c.category === next)
+        .some((c) => c.day === day)
+    );
+    if (available.length > 0 && !available.includes(selectedDay)) {
+      setSelectedDay(available[0]);
+    }
   };
+
+  const dayClasses = filteredClasses
+    .filter((c) => c.day === selectedDay)
+    .sort((a, b) => timeToMinutes(a.time) - timeToMinutes(b.time));
+
+  // Show Mon–Sat always; Sunday only if it has classes
+  const visibleDays = DAY_ORDER.filter(
+    (d) => d !== "Sunday" || daysWithClasses.includes("Sunday")
+  );
 
   return (
     <>
@@ -225,26 +171,27 @@ export default function TimetablePage() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-5 flex items-center gap-2 text-sm text-ink/50"
           >
-            <MapPin size={14} className="text-crimson shrink-0" />
+            <MapPin size={14} className="shrink-0 text-crimson" />
             <span>Beechcroft Road, London SW17 7DF</span>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Schedule Grid ────────────────────────────────── */}
+      {/* ── Schedule ─────────────────────────────────────── */}
       <section className="bg-white py-10 md:py-16">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          {/* Filter tabs */}
+        <div className="mx-auto max-w-3xl px-6 md:px-10">
+
+          {/* Category filter */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="mb-10 flex w-fit items-center gap-1 rounded-2xl bg-surface-lightest p-1.5 ring-1 ring-ink/5 md:mb-12"
+            className="mb-6 flex w-fit items-center gap-1 rounded-2xl bg-surface-lightest p-1.5 ring-1 ring-ink/5"
           >
             {filters.map((f) => (
               <button
                 key={f.value}
-                onClick={() => setFilter(f.value)}
+                onClick={() => handleFilterChange(f.value)}
                 className="relative rounded-xl px-4 py-2 font-headline text-sm font-bold transition-colors sm:px-5 sm:py-2.5"
               >
                 {filter === f.value && (
@@ -265,122 +212,126 @@ export default function TimetablePage() {
             ))}
           </motion.div>
 
-          {/* Calendar Grid */}
-          <AnimatePresence mode="wait">
-            {isLoading ? (
-              <div className="text-center py-12 text-ink/60">Loading timetable...</div>
-            ) : daysWithClasses.length === 0 ? (
-              <div className="text-center py-12 text-ink/60">No classes available for this filter.</div>
-            ) : (
-              <motion.div
-                key={filter}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-              >
-                {/* Table Grid */}
-                <div className="overflow-x-auto rounded-2xl ring-1 ring-ink/5">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="bg-surface-lightest">
-                        <th className="px-4 py-3 text-left font-headline text-xs font-bold text-ink/50 uppercase tracking-widest md:px-6 md:py-4">
-                          Time
-                        </th>
-                        {daysWithClasses.map((day) => (
-                          <th
-                            key={day}
-                            className="px-3 py-3 text-center font-headline text-sm font-black text-ink md:px-6 md:py-4"
-                          >
-                            {day}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-ink/5">
-                      {uniqueTimes.map((time) => (
-                        <tr key={time} className="bg-white hover:bg-surface-lightest/50 transition-colors">
-                          <td className="sticky left-0 bg-white px-4 py-4 font-headline font-bold text-ink/70 text-sm md:px-6 z-10">
-                            {time}
-                          </td>
-                          {daysWithClasses.map((day) => {
-                            const slotClasses = getClassesForSlot(day, time);
-                            return (
-                              <td
-                                key={`${day}-${time}`}
-                                className="px-3 py-4 md:px-6 align-top"
-                              >
-                                {slotClasses.length > 0 && (
-                                  <div className="space-y-2">
-                                    {slotClasses.map((cls) => {
-                                      const status = statusConfig[cls.status];
-                                      const isKids = cls.category === "kids";
-                                      return (
-                                        <motion.div
-                                          key={cls.id}
-                                          initial={{ opacity: 0, scale: 0.95 }}
-                                          animate={{ opacity: 1, scale: 1 }}
-                                          transition={{ duration: 0.2 }}
-                                          className={`rounded-lg border-2 p-3 text-xs md:text-sm ${status.className}`}
-                                        >
-                                          <div className="flex items-start gap-2">
-                                            <div className={`h-2 w-2 rounded-full flex-shrink-0 mt-1 ${
-                                              isKids ? "bg-crimson" : "bg-navy"
-                                            }`} />
-                                            <div className="flex-1 min-w-0">
-                                              <p className="font-headline font-bold text-ink truncate">
-                                                {cls.program}
-                                              </p>
-                                              <p className="text-ink/60 text-xs mt-0.5">
-                                                {cls.ageGroup}
-                                              </p>
-                                              <p className="text-ink/50 text-[10px] mt-1">
-                                                {cls.status === "available" && "Available"}
-                                                {cls.status === "limited" && "Limited"}
-                                                {cls.status === "enrolling" && "Enrolling"}
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </motion.div>
-                                      );
-                                    })}
-                                  </div>
-                                )}
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Legend */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl bg-surface-lightest px-5 py-4 ring-1 ring-ink/5 md:gap-6 md:px-6"
+          {/* Day picker */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
+            className="mb-8 flex gap-2 overflow-x-auto pb-1"
+            style={{ scrollbarWidth: "none" }}
+          >
+            {visibleDays.map((day) => {
+              const hasClasses = daysWithClasses.includes(day);
+              const isSelected = day === selectedDay;
+              const isToday    = day === todayName;
+              return (
+                <button
+                  key={day}
+                  onClick={() => hasClasses && setSelectedDay(day)}
+                  disabled={!hasClasses}
+                  className={`relative flex shrink-0 flex-col items-center rounded-2xl px-4 py-3 font-headline font-bold transition-all duration-200
+                    ${isSelected
+                      ? "bg-ink text-white shadow-md"
+                      : hasClasses
+                        ? "bg-surface-lightest text-ink hover:bg-surface-light ring-1 ring-ink/5"
+                        : "bg-surface-lightest text-ink/20 cursor-not-allowed ring-1 ring-ink/5"
+                    }`}
                 >
-                  <span className="font-headline text-xs font-bold uppercase tracking-widest text-ink/35">
-                    Key
+                  <span className={`text-[10px] font-extrabold uppercase tracking-widest ${isSelected ? "text-white/60" : "text-ink/40"}`}>
+                    {DAY_SHORT[day]}
                   </span>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-crimson" />
-                    <span className="text-sm font-medium text-ink/60">Kids</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-navy" />
-                    <span className="text-sm font-medium text-ink/60">Adults</span>
-                  </div>
-                </motion.div>
+                  {isToday && (
+                    <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-crimson ring-2 ring-white" />
+                  )}
+                </button>
+              );
+            })}
+          </motion.div>
 
-                <p className="mt-6 text-center text-sm text-ink/40">
-                  Schedule subject to change during school holidays. See booking form below to reserve a spot.
+          {/* Class cards */}
+          {isLoading ? (
+            <SkeletonCards />
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${filter}-${selectedDay}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
+              >
+                {dayClasses.length === 0 ? (
+                  <p className="py-12 text-center text-ink/40">
+                    No {filter === "all" ? "" : filter + " "}classes on {selectedDay}.
+                  </p>
+                ) : (
+                  <div className="space-y-3">
+                    {dayClasses.map((cls, i) => {
+                      const isKids  = cls.category === "kids";
+                      const status  = statusConfig[cls.status];
+                      return (
+                        <motion.div
+                          key={cls.id}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.25, delay: i * 0.07 }}
+                          className="flex overflow-hidden rounded-2xl bg-surface-lightest ring-1 ring-ink/5"
+                        >
+                          {/* Category accent bar */}
+                          <div className={`w-1 shrink-0 ${isKids ? "bg-crimson" : "bg-navy"}`} />
+
+                          <div className="flex flex-1 flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:gap-0">
+                            {/* Time */}
+                            <div className="shrink-0 sm:w-36">
+                              <p className="font-headline text-2xl font-black tracking-tight text-ink">
+                                {cls.time}
+                              </p>
+                              <p className="mt-0.5 text-xs text-ink/45">
+                                until {cls.endTime} · {cls.duration}
+                              </p>
+                            </div>
+
+                            {/* Program info */}
+                            <div className="flex-1 sm:px-5">
+                              <p className="font-headline text-base font-black leading-tight text-ink">
+                                {cls.program}
+                              </p>
+                              <p className="mt-1 text-sm text-ink/55">
+                                {cls.ageGroup}
+                                {cls.level ? ` · ${cls.level}` : ""}
+                              </p>
+                            </div>
+
+                            {/* Badges */}
+                            <div className="flex items-center gap-2 sm:flex-col sm:items-end sm:gap-1.5">
+                              <span
+                                className={`rounded-full px-2.5 py-1 font-headline text-xs font-bold ${
+                                  isKids
+                                    ? "bg-crimson/10 text-crimson"
+                                    : "bg-navy/10 text-navy"
+                                }`}
+                              >
+                                {isKids ? "Kids" : "Adults"}
+                              </span>
+                              <span
+                                className={`rounded-full px-2.5 py-1 text-xs font-semibold ${status.bg} ${status.text}`}
+                              >
+                                {status.label}
+                              </span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                <p className="mt-6 text-center text-xs text-ink/35">
+                  Schedule subject to change during school holidays.
                 </p>
               </motion.div>
-            )}
-          </AnimatePresence>
+            </AnimatePresence>
+          )}
         </div>
       </section>
 
@@ -397,7 +348,7 @@ export default function TimetablePage() {
               Ready to join?
             </h2>
             <p className="mt-3 text-lg text-ink/60">
-              Fill in your details and choose a class. We'll be in touch to confirm your booking.
+              Fill in your details and choose a class. We&apos;ll be in touch to confirm your booking.
             </p>
           </motion.div>
 
@@ -409,7 +360,7 @@ export default function TimetablePage() {
             className="mt-8 rounded-3xl bg-white p-8 ring-1 ring-ink/5 md:p-10"
           >
             {isLoading ? (
-              <div className="text-center py-8 text-ink/60">Loading form...</div>
+              <div className="py-8 text-center text-ink/60">Loading form...</div>
             ) : (
               <BookingForm classes={classes} />
             )}
