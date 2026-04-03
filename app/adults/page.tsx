@@ -213,8 +213,8 @@ export default function AdultsPage() {
                   className="aspect-[3/4] overflow-hidden rounded-4xl shadow-xl"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1525198104776-f6e8a873f9b7?w=800&q=80&fit=crop"
-                    alt="Martial artist in black belt"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXDqZuPq9Nr15jCWQdIvA3qSCai_fumYdNu73rOb1Lya2UbS_qXYBP152QfIen4uBR6r5cxv0tglATw2iV4iDDFvCnU3jhDHQ9PpSHIWL0Q_9fVZ6pfOZ6siIftpvUEiZHn_ulVoYsJyeM_9lJWJbui-7QD9XdPodmyXAxcYkHAR8h7HLRbhZtQ33EgWboIz01dsqGLuV7PL29R4CB214Rp82yUFPQKpvx0vsl2LMSomAv7kRjCQ1oFm21CEiIQvy3uVnbeftAoN0"
+                    alt="Judo black belt"
                     fill={false}
                     width={400}
                     height={540}
@@ -244,8 +244,8 @@ export default function AdultsPage() {
                   className="aspect-square overflow-hidden rounded-4xl shadow-xl"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1486215397028-cb4f31efea3e?w=800&q=80&fit=crop"
-                    alt="Martial arts competition"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm-NRHJCm8LWXPf5YTdmzCdDMxcO6p2XzBvSvXVOqJHLm-NrgGoDUu1Agyj-BJMyF4khjkcKNPjv1aXapA9BpMWwPSx-gEkEIwHYpJjsiSZU9UkzW1As6HiKP1K7adW2UPGhTTLYiae7s_TJQtaJvpTVIcFNQeKAafgmt_9Z0J7WZRDj4cjfoMMylccCSfp9iy9nBm5ETUYnKFJZiPn9nNY27_6bV436h9cpL49uLMKUuWR-6gVFyKwyBifeCup62JYG7S5qlK_1E"
+                    alt="Judokas bowing"
                     fill={false}
                     width={400}
                     height={400}
@@ -260,8 +260,8 @@ export default function AdultsPage() {
                   className="aspect-[3/4] overflow-hidden rounded-4xl shadow-xl"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1542937307-a570f5351942?w=800&q=80&fit=crop"
-                    alt="Jiu-jitsu ground technique"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4nHPo43QU4kLmRXrJUw6DjFVNlU7VsOJuK-Z1obZzCXxymraF80x-54qPNb5Wxo_maiiPwFY8Php-MrHdpij3xzopDpKcdiqnuZe7KzMlCYraIFY5n4qe86cUT3tE4TYNXIq5LKq2ZlNTrbW_ahWeee5Z_9sycE_izWnwlfw-p18jHPhdenPnte7r0lt6bG86XPOEO5zFfBWPjU5wZEdD5UuZLykQpvfb4Cev4YjWsiR3alDk-9uK-V1Ib-zsYD9pxACxLkkhWps"
+                    alt="Dynamic judo throw"
                     fill={false}
                     width={400}
                     height={540}
