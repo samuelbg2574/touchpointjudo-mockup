@@ -1,3 +1,5 @@
+import { sanitizeHtml } from "@/lib/validation";
+
 const AIRTABLE_API_BASE = "https://api.airtable.com/v0";
 const TOKEN = process.env.AIRTABLE_TOKEN;
 const BASE_ID = process.env.AIRTABLE_BASE_ID;
@@ -90,15 +92,15 @@ export async function fetchClasses(): Promise<ClassEntry[]> {
 
     return data.records.map((record: any) => ({
       id: record.id,
-      day: record.fields.day || "",
-      time: record.fields.time || "",
-      endTime: record.fields.endTime || "",
-      program: record.fields.program || "",
-      category: record.fields.category || "kids",
-      ageGroup: record.fields.ageGroup || "",
-      level: record.fields.level || "",
+      day: sanitizeHtml(record.fields.day || ""),
+      time: sanitizeHtml(record.fields.time || ""),
+      endTime: sanitizeHtml(record.fields.endTime || ""),
+      program: sanitizeHtml(record.fields.program || ""),
+      category: sanitizeHtml(record.fields.category || "kids"),
+      ageGroup: sanitizeHtml(record.fields.ageGroup || ""),
+      level: sanitizeHtml(record.fields.level || ""),
       status: record.fields.status || "available",
-      duration: record.fields.duration || "",
+      duration: sanitizeHtml(record.fields.duration || ""),
       capacity: record.fields.capacity ? Number(record.fields.capacity) : undefined,
     }));
   } catch (error) {
