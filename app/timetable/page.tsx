@@ -236,7 +236,6 @@ export default function TimetablePage() {
             {visibleDays.map((day) => {
               const hasClasses = daysWithClasses.includes(day);
               const isSelected = day === selectedDay;
-              const isToday    = day === todayName;
               return (
                 <button
                   key={day}
@@ -259,9 +258,6 @@ export default function TimetablePage() {
                   <span className={`text-[10px] ${isSelected ? "text-white/50" : hasClasses ? "text-ink/40" : "text-ink/15"}`}>
                     {nextDateForDay(day).split(" ")[1]}
                   </span>
-                  {isToday && (
-                    <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-crimson ring-2 ring-white" />
-                  )}
                 </button>
               );
             })}
