@@ -17,7 +17,7 @@ export function ContactCTA({
 }: ContactCTAProps) {
   return (
     <section
-      className={`relative overflow-hidden py-28 ${
+      className={`relative overflow-hidden py-16 md:py-28 ${
         dark ? "bg-ink text-white" : "bg-surface-light text-ink"
       }`}
     >
@@ -31,7 +31,7 @@ export function ContactCTA({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-headline text-4xl font-black leading-tight md:text-6xl text-balance"
+          className="font-headline text-3xl font-black leading-tight md:text-6xl text-balance"
         >
           {heading}
         </motion.h2>
@@ -58,14 +58,14 @@ export function ContactCTA({
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full bg-green-500 px-8 py-4 font-headline text-base font-bold text-white shadow-lg shadow-green-500/30 transition-all hover:-translate-y-0.5 hover:bg-green-600 hover:shadow-xl"
+            className="flex items-center gap-2 rounded-full bg-green-500 px-6 py-3 font-headline text-sm font-bold text-white shadow-lg shadow-green-500/30 transition-all hover:-translate-y-0.5 hover:bg-green-600 hover:shadow-xl md:px-8 md:py-4 md:text-base"
           >
             <MessageCircle size={18} />
             WhatsApp Us
           </a>
           <a
             href={MAILTO_URL}
-            className={`flex items-center gap-2 rounded-full border px-8 py-4 font-headline text-base font-bold transition-all hover:-translate-y-0.5 ${
+            className={`flex items-center gap-2 rounded-full border px-6 py-3 font-headline text-sm font-bold transition-all hover:-translate-y-0.5 md:px-8 md:py-4 md:text-base ${
               dark
                 ? "border-white/20 text-white hover:bg-white/10"
                 : "border-ink/20 text-ink hover:bg-ink/5"

@@ -16,14 +16,7 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -31,12 +24,7 @@ export function Nav() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-white/90 backdrop-blur-xl shadow-sm"
-          : "bg-transparent"
-      )}
+      className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-xl shadow-sm transition-all duration-500"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         {/* Logo */}

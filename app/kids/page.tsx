@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Shield, Brain, Zap, Users, CheckCircle, Star } from "lucide-react";
+import { Shield, Brain, Zap, Users, CheckCircle, Star, MessageCircle } from "lucide-react";
 import { ContactCTA } from "@/components/ContactCTA";
+import { WHATSAPP_URL } from "@/lib/utils";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -52,24 +53,45 @@ const testimonials = [
     since: "Parent since 2023",
     initials: "JC",
   },
+  {
+    quote:
+      "My son has grown so much in confidence since starting here. The instructors are patient and truly care about every child's development.",
+    name: "Emma Thompson",
+    since: "Parent since 2021",
+    initials: "ET",
+  },
+  {
+    quote:
+      "Incredible discipline and respect being taught. Our daughter has become more focused at school and we couldn't be happier with the results.",
+    name: "David Park",
+    since: "Parent since 2023",
+    initials: "DP",
+  },
+  {
+    quote:
+      "The community feel is unmatched. It's not just a club — the whole family feels part of something special. Highly recommend to any parent.",
+    name: "Rachel Adams",
+    since: "Parent since 2022",
+    initials: "RA",
+  },
 ];
 
 export default function KidsPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative min-h-screen overflow-hidden bg-surface-lightest pt-20">
-        {/* decorative blob */}
-        <div className="pointer-events-none absolute -right-64 -top-64 h-[600px] w-[600px] rounded-full bg-crimson/5 blur-3xl" />
+      <section className="relative overflow-hidden bg-surface-lightest pt-20">
+        {/* decorative blob — hidden on small screens to avoid overflow */}
+        <div className="pointer-events-none absolute -right-32 -top-32 h-[300px] w-[300px] rounded-full bg-crimson/5 blur-3xl md:-right-64 md:-top-64 md:h-[600px] md:w-[600px]" />
 
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 py-24 md:px-10 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:gap-16 md:px-10 md:py-24 lg:grid-cols-2">
           {/* Copy */}
           <div>
             <motion.span
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-6 inline-block rounded-full bg-crimson/10 px-4 py-1.5 font-headline text-xs font-bold uppercase tracking-widest text-crimson"
+              className="mb-5 inline-block rounded-full bg-crimson/10 px-4 py-1.5 font-headline text-xs font-bold uppercase tracking-widest text-crimson"
             >
               Elite Youth Program
             </motion.span>
@@ -78,7 +100,7 @@ export default function KidsPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
-              className="font-headline text-5xl font-black leading-[1.05] tracking-tighter text-ink md:text-7xl"
+              className="font-headline text-4xl font-black leading-[1.05] tracking-tighter text-ink sm:text-5xl md:text-7xl"
             >
               The Best Start{" "}
               <br />
@@ -90,7 +112,7 @@ export default function KidsPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 max-w-md text-lg leading-relaxed text-ink/60"
+              className="mt-5 max-w-md text-base leading-relaxed text-ink/60 md:mt-6 md:text-lg"
             >
               Our Kids Judo Classes combine discipline, safety, and explosive fun to help your child grow into a confident and capable young individual.
             </motion.p>
@@ -99,17 +121,20 @@ export default function KidsPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-8 flex flex-wrap gap-3 md:mt-10 md:gap-4"
             >
               <a
-                href="mailto:hello@touchpointjudo.com"
-                className="rounded-full bg-crimson px-8 py-4 font-headline font-bold text-white shadow-lg shadow-crimson/25 transition-all hover:-translate-y-0.5 hover:shadow-xl"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-full bg-crimson px-6 py-3 font-headline text-sm font-bold text-white shadow-lg shadow-crimson/25 transition-all hover:-translate-y-0.5 hover:shadow-xl md:px-8 md:py-4"
               >
+                <MessageCircle size={18} />
                 Book a Free Trial
               </a>
               <a
                 href="#programs"
-                className="rounded-full border border-ink/15 bg-white px-8 py-4 font-headline font-bold text-ink transition-all hover:bg-surface-light"
+                className="rounded-full border border-ink/15 bg-white px-6 py-3 font-headline text-sm font-bold text-ink transition-all hover:bg-surface-light md:px-8 md:py-4"
               >
                 Our Programs
               </a>
@@ -124,44 +149,44 @@ export default function KidsPage() {
             whileHover={{ rotate: 0 }}
             className="relative"
           >
-            <div className="overflow-hidden rounded-5xl shadow-2xl">
+            <div className="overflow-hidden rounded-4xl shadow-2xl sm:rounded-5xl">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd2Q9bqgM3o6d7tMNDVUSb9suFI-gVnzpDiENZaKkdwZC2EZ9ny5JzJFkNb1Dsc_2o8DOeA-f2GFFeVMlf2MAsiDqDjEO-6QXvlXJWb9Bm4YS_m86YGKkaOdWpsoVL1JrvoHpQYPvjDuZCHe36kZ84iU9a8Cm2kOV74bmzgqQdWYT3iq49cYskE4IQbSqjM6YADU4tXO-jvrIVxK_5E3fB06bkzQvfbwlvdrL6_qjDPz1g0ks-xkIHS6a1A_Geo0sUX57MV8g71cI"
-                alt="Happy kids in judo class"
+                src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=80&fit=crop"
+                alt="Young martial artist in white gi"
                 width={700}
                 height={800}
-                className="h-[520px] w-full object-cover"
+                className="h-[320px] w-full object-cover sm:h-[420px] md:h-[520px]"
                 priority
               />
             </div>
-            {/* floating badge */}
-            <div className="absolute -bottom-6 -left-6 rounded-2xl bg-white p-5 shadow-xl ring-1 ring-ink/5">
+            {/* floating badge — hidden on very small screens */}
+            <div className="absolute -bottom-4 -left-4 hidden rounded-2xl bg-white p-4 shadow-xl ring-1 ring-ink/5 sm:-bottom-6 sm:-left-6 sm:block sm:p-5">
               <div className="flex items-center gap-1 text-yellow-500 mb-1">
                 {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
               </div>
-              <p className="font-headline text-sm font-bold text-ink">"Best decision we made for our son."</p>
+              <p className="font-headline text-sm font-bold text-ink">&ldquo;Best decision we made for our son.&rdquo;</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ── Skills grid ──────────────────────────────────── */}
-      <section className="bg-white py-28">
+      <section className="bg-white py-16 md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="mb-16 text-center">
+          <div className="mb-10 text-center md:mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-headline text-4xl font-black tracking-tighter text-ink md:text-5xl"
+              className="font-headline text-3xl font-black tracking-tighter text-ink md:text-5xl"
             >
               Building Skills for Life
             </motion.h2>
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-crimson" />
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {skills.map((s, i) => (
               <motion.div
                 key={s.title}
@@ -171,12 +196,12 @@ export default function KidsPage() {
                 whileInView="show"
                 viewport={{ once: true }}
                 whileHover={{ y: -6 }}
-                className="group rounded-3xl bg-surface-lightest p-8 ring-1 ring-ink/5 transition-shadow hover:shadow-xl"
+                className="group rounded-3xl bg-surface-lightest p-6 ring-1 ring-ink/5 transition-shadow hover:shadow-xl md:p-8"
               >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-crimson/10 transition-colors group-hover:bg-crimson">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-crimson/10 transition-colors group-hover:bg-crimson md:mb-6">
                   <s.icon size={22} className="text-crimson transition-colors group-hover:text-white" />
                 </div>
-                <h3 className="mb-2 font-headline text-xl font-bold text-ink">{s.title}</h3>
+                <h3 className="mb-2 font-headline text-lg font-bold text-ink md:text-xl">{s.title}</h3>
                 <p className="text-sm leading-relaxed text-ink/55">{s.body}</p>
               </motion.div>
             ))}
@@ -185,15 +210,15 @@ export default function KidsPage() {
       </section>
 
       {/* ── Programs ─────────────────────────────────────── */}
-      <section className="bg-surface-lightest py-28" id="programs">
+      <section className="bg-surface-lightest py-16 md:py-28" id="programs">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-headline text-4xl font-black tracking-tighter text-ink md:text-5xl"
+              className="font-headline text-3xl font-black tracking-tighter text-ink md:text-5xl"
             >
               Our Programs
             </motion.h2>
@@ -202,77 +227,124 @@ export default function KidsPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-4 md:gap-6 lg:grid-cols-3">
             {/* Safety note */}
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, rotateY: -15, scale: 0.92 }}
+              whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col justify-between rounded-3xl bg-crimson p-10 text-white lg:col-span-1"
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
+              className="flex flex-col justify-between rounded-3xl bg-crimson p-7 text-white md:p-10 lg:col-span-1"
+              style={{ transformPerspective: 1200 }}
             >
               <div>
-                <h3 className="font-headline text-2xl font-black mb-4">Safety First</h3>
-                <p className="text-white/75 leading-relaxed">
-                  All classes are taught on professional-grade mats by certified, background-checked instructors. Your child's safety is our absolute priority.
+                <motion.h3
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="font-headline text-2xl font-black mb-4"
+                >
+                  Safety First
+                </motion.h3>
+                <p className="text-white/75 leading-relaxed text-sm md:text-base">
+                  All classes are taught on professional-grade mats by certified, background-checked instructors. Your child&apos;s safety is our absolute priority.
                 </p>
               </div>
-              <div className="mt-10 space-y-3">
-                {["DBS-checked coaches", "Professional tatami mats", "Small class sizes"].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
+              <div className="mt-8 space-y-3">
+                {["DBS-checked coaches", "Professional tatami mats", "Small class sizes"].map((item, i) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
+                    className="flex items-center gap-3"
+                  >
                     <CheckCircle size={16} className="text-white/70 shrink-0" />
                     <span className="text-sm font-medium">{item}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
 
             {/* Little Tigers */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 60, rotateX: 8 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="rounded-3xl bg-white p-10 ring-1 ring-ink/5 shadow-sm"
+              transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+              whileHover={{ y: -8, boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)", transition: { duration: 0.3 } }}
+              className="rounded-3xl bg-white p-7 ring-1 ring-ink/5 shadow-sm md:p-10"
+              style={{ transformPerspective: 1200 }}
             >
-              <div className="mb-2 inline-block rounded-full bg-orange-100 px-3 py-1 font-headline text-xs font-bold text-orange-600">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.4, type: "spring", stiffness: 200 }}
+                className="mb-2 inline-block rounded-full bg-orange-100 px-3 py-1 font-headline text-xs font-bold text-orange-600"
+              >
                 Ages 4 – 7
-              </div>
+              </motion.div>
               <h3 className="mt-4 font-headline text-2xl font-black text-ink">Little Tigers</h3>
-              <p className="mt-3 text-ink/55 leading-relaxed">
-                Intro to Judo basics, fun coordination games, and focus & listening skills in a nurturing, playful environment.
+              <p className="mt-3 text-ink/55 leading-relaxed text-sm md:text-base">
+                Intro to Judo basics, fun coordination games, and focus &amp; listening skills in a nurturing, playful environment.
               </p>
-              <ul className="mt-8 space-y-3">
-                {["Intro to Judo basics", "Fun coordination games", "Focus & listening skills"].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm font-medium text-ink/70">
+              <ul className="mt-6 space-y-3 md:mt-8">
+                {["Intro to Judo basics", "Fun coordination games", "Focus & listening skills"].map((item, i) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
+                    className="flex items-center gap-3 text-sm font-medium text-ink/70"
+                  >
                     <CheckCircle size={16} className="text-crimson shrink-0" />
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>
 
             {/* Young Samurais */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, rotateY: 15, scale: 0.92 }}
+              whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="rounded-3xl bg-ink p-10 text-white"
+              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
+              className="rounded-3xl bg-ink p-7 text-white md:p-10"
+              style={{ transformPerspective: 1200 }}
             >
-              <div className="mb-2 inline-block rounded-full bg-white/15 px-3 py-1 font-headline text-xs font-bold text-white/80">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.55, type: "spring", stiffness: 200 }}
+                className="mb-2 inline-block rounded-full bg-white/15 px-3 py-1 font-headline text-xs font-bold text-white/80"
+              >
                 Ages 8 – 12
-              </div>
+              </motion.div>
               <h3 className="mt-4 font-headline text-2xl font-black text-white">Young Samurais</h3>
-              <p className="mt-3 text-white/60 leading-relaxed">
+              <p className="mt-3 text-white/60 leading-relaxed text-sm md:text-base">
                 Advanced technical Judo, controlled sparring, and a rank promotion system that rewards dedication and growth.
               </p>
-              <ul className="mt-8 space-y-3">
-                {["Advanced technical Judo", "Controlled sparring", "Rank promotion system"].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm font-medium text-white/70">
+              <ul className="mt-6 space-y-3 md:mt-8">
+                {["Advanced technical Judo", "Controlled sparring", "Rank promotion system"].map((item, i) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.65 + i * 0.1 }}
+                    className="flex items-center gap-3 text-sm font-medium text-white/70"
+                  >
                     <CheckCircle size={16} className="text-crimson-muted shrink-0" />
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>
@@ -281,39 +353,39 @@ export default function KidsPage() {
       </section>
 
       {/* ── Action gallery ───────────────────────────────── */}
-      <section className="bg-white py-28 overflow-hidden">
+      <section className="bg-white py-16 overflow-hidden md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="mb-10 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-4xl font-black tracking-tighter text-ink md:text-5xl max-w-lg"
+              className="font-headline text-3xl font-black tracking-tighter text-ink md:text-5xl max-w-lg"
             >
               Learning Through Action
             </motion.h2>
-            <p className="text-ink/55 max-w-sm">
-              Our students don't just learn martial arts — they build friendships and memories that last a lifetime.
+            <p className="text-ink/55 max-w-sm text-sm md:text-base">
+              Our students don&apos;t just learn martial arts — they build friendships and memories that last a lifetime.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-3">
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="group relative h-[420px] overflow-hidden rounded-4xl"
+              className="group relative h-[280px] overflow-hidden rounded-4xl sm:h-[360px] md:h-[420px]"
             >
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR5DVQnffs96QOC7Llo0xmi9qxqsTF3Xq-D6rERZ-SBdldSDIKCFFYxLdXsw0ErqNQVdLinsjEIWCUiKTcrF8g8yDS5UWQa93cCq8lg0G4NnWhy5jLmEORWM1PpWvGkF7Peuj-Q6B9fK6N1gcP5V1J-AK2x6helJ7U1NzvmGVUXjOsZ9-tiAVAOHnj2wCPwVf-F8MoSY7grwV43QkUL8WkRcXeB2E6CPavSCVRQIalk_Vwn0drqgi1_amR5bx9dlsaw6-T5I2Mzy4"
-                alt="Young judoka focus and precision"
+                src="https://images.unsplash.com/photo-1560631820-5bc34db86fe7?w=800&q=80&fit=crop"
+                alt="Martial artists preparing to spar"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <p className="absolute bottom-6 left-6 font-headline font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">
-                Focus & Precision
+                Focus &amp; Precision
               </p>
             </motion.div>
 
@@ -322,13 +394,13 @@ export default function KidsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="flex h-[420px] items-center justify-center rounded-4xl bg-crimson/5 p-10 text-center md:translate-y-10"
+              className="flex h-[280px] items-center justify-center rounded-4xl bg-crimson/5 p-8 text-center sm:h-[360px] md:h-[420px] md:translate-y-10 md:p-10"
             >
               <div>
                 <Star size={48} className="mx-auto mb-4 text-crimson" fill="currentColor" />
-                <h4 className="font-headline text-2xl font-bold text-ink mb-3">Join Our Community</h4>
+                <h4 className="font-headline text-xl font-bold text-ink mb-3 md:text-2xl">Join Our Community</h4>
                 <p className="text-sm leading-relaxed text-ink/55">
-                  Our academy is more than just a gym — it's a family where everyone belongs.
+                  Our academy is more than just a gym — it&apos;s a family where everyone belongs.
                 </p>
               </div>
             </motion.div>
@@ -338,65 +410,73 @@ export default function KidsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="group relative h-[420px] overflow-hidden rounded-4xl"
+              className="group relative h-[280px] overflow-hidden rounded-4xl sm:h-[360px] md:h-[420px]"
             >
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv3ANd6-b1Fi76mrfuAG0NCStE1CtNw7v_6dMP_hZkQ_TNQ8K5YTBHCG-5Z9dhhZwmMkD2uTdQK7KybcV95IAauy5q3Mwy-uXXYgkXL8YMIDbb7BYBMiXfYTyoQA_TQLYxxzQdFxTECcpsdAkvRYFVBpcMaDQeWWj_cCM9pHrOBWhI7igRPu0gxAinEgYocoa6Q4tE-4bs0cGptc_v1VJQN529QWOW3Ki_nJeRm18lCjJca-qm4DlL5plQJ5M4RZd2dRpnbAoFscE"
-                alt="Coaching and community"
+                src="https://images.unsplash.com/photo-1564415315949-7a0c4c73aab4?w=800&q=80&fit=crop"
+                alt="Dynamic martial arts sparring action"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <p className="absolute bottom-6 left-6 font-headline font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">
-                Coaching & Community
+                Coaching &amp; Community
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── Testimonials ─────────────────────────────────── */}
-      <section className="bg-surface-lightest py-28">
+      {/* ── Testimonials Carousel ────────────────────────── */}
+      <section className="bg-surface-lightest py-16 overflow-hidden md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16 text-center font-headline text-4xl font-black tracking-tighter text-ink md:text-5xl"
+            className="mb-12 text-center font-headline text-3xl font-black tracking-tighter text-ink md:mb-16 md:text-5xl"
           >
             What Parents Say
           </motion.h2>
+        </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={t.name}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="relative rounded-3xl bg-white p-10 shadow-sm ring-1 ring-ink/5"
+        {/* Marquee — duplicated list for seamless loop */}
+        <div className="relative">
+          {/* Fade edges */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-12 bg-gradient-to-r from-surface-lightest to-transparent md:w-24" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-12 bg-gradient-to-l from-surface-lightest to-transparent md:w-24" />
+
+          <motion.div
+            className="flex gap-4 md:gap-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              x: { repeat: Infinity, repeatType: "loop", duration: 35, ease: "linear" },
+            }}
+          >
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <div
+                key={`${t.name}-${i}`}
+                className="relative w-[280px] shrink-0 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-ink/5 sm:w-[340px] md:w-[380px] md:p-8"
               >
-                <div className="absolute -top-5 left-10 flex h-10 w-10 items-center justify-center rounded-full bg-crimson">
-                  <span className="font-headline text-xl font-black leading-none text-white">"</span>
+                <div className="absolute -top-4 left-8 flex h-8 w-8 items-center justify-center rounded-full bg-crimson">
+                  <span className="font-headline text-lg font-black leading-none text-white">&ldquo;</span>
                 </div>
-                <div className="mb-4 flex gap-1 text-yellow-400">
-                  {[...Array(5)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
+                <div className="mb-3 flex gap-1 text-yellow-400">
+                  {[...Array(5)].map((_, j) => <Star key={j} size={13} fill="currentColor" />)}
                 </div>
-                <p className="mb-6 text-lg italic leading-relaxed text-ink/70">"{t.quote}"</p>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-crimson/10 font-headline text-sm font-bold text-crimson">
+                <p className="mb-5 text-sm italic leading-relaxed text-ink/70">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-crimson/10 font-headline text-xs font-bold text-crimson">
                     {t.initials}
                   </div>
                   <div>
-                    <p className="font-headline font-bold text-ink">{t.name}</p>
-                    <p className="text-sm text-ink/50">{t.since}</p>
+                    <p className="font-headline text-sm font-bold text-ink">{t.name}</p>
+                    <p className="text-xs text-ink/50">{t.since}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

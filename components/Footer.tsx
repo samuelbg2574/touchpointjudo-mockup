@@ -5,8 +5,8 @@ import { CONTACT_EMAIL, CONTACT_PHONE, WHATSAPP_URL, MAILTO_URL } from "@/lib/ut
 export function Footer() {
   return (
     <footer className="bg-ink text-white/60">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:px-10">
-        <div className="grid gap-12 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-6 py-10 md:px-10 md:py-16">
+        <div className="grid gap-8 md:gap-12 md:grid-cols-3">
           {/* Brand */}
           <div>
             <span className="block font-headline text-lg font-black text-white mb-3">
