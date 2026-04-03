@@ -47,3 +47,4 @@
 - Push to git only when explicitly asked
 - Mobile-first responsive design throughout
 - Keep WhatsApp as primary CTA channel
+- Keep "Remaining TODOs" section in CLAUDE.md up to date — check off items as they're completed, add new items as they're discovered
