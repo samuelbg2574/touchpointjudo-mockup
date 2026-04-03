@@ -358,7 +358,7 @@ export default function AboutPage() {
                   <div>
                     <p className="font-headline font-bold">Location</p>
                     <p className="mt-1 text-sm text-white/60">
-                      Parkham Street<br />Battersea, London SW11 3DQ
+                      Beechcroft Road<br />London SW17 7DF
                     </p>
                   </div>
                 </div>
@@ -413,7 +413,7 @@ export default function AboutPage() {
             {/* Map */}
             <div className="relative min-h-[300px] flex-1 bg-surface-mid md:min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps?q=Touch%20Point%20Judo%20Academy%2C%20Parkham%20Street%2C%20Battersea%2C%20London%20SW11%203DQ&z=15&output=embed"
+                src="https://www.google.com/maps?q=Touch%20Point%20Judo%20Academy%2C%20Beechcroft%20Road%2C%20London%20SW17%207DF&z=15&output=embed"
                 title="Touch Point Judo Academy on Google Maps"
                 className="h-full min-h-[300px] w-full md:min-h-[400px]"
                 loading="lazy"

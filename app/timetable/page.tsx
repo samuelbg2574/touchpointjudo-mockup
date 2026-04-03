@@ -211,7 +211,7 @@ export default function TimetablePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 max-w-xl text-base leading-relaxed text-ink/60 md:mt-6 md:text-lg"
           >
-            Weekly classes for kids and adults at our Battersea dojo. Find a session that fits your schedule and get in touch to reserve your spot.
+            Weekly classes for kids and adults at our Tooting dojo. Find a session that fits your schedule and get in touch to reserve your spot.
           </motion.p>
 
           <motion.div
@@ -221,7 +221,7 @@ export default function TimetablePage() {
             className="mt-5 flex items-center gap-2 text-sm text-ink/50"
           >
             <MapPin size={14} className="text-crimson shrink-0" />
-            <span>Parkham Street, Battersea, London SW11 3DQ</span>
+            <span>Beechcroft Road, London SW17 7DF</span>
           </motion.div>
         </div>
       </section>
