@@ -11,6 +11,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/kids", label: "Kids" },
   { href: "/adults", label: "Adults" },
+  { href: "/timetable", label: "Timetable" },
   { href: "/about", label: "About" },
 ];
 

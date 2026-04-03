@@ -27,6 +27,7 @@ export function Footer() {
                 { href: "/", label: "Home" },
                 { href: "/kids", label: "Kids Classes" },
                 { href: "/adults", label: "Adult Classes" },
+                { href: "/timetable", label: "Timetable" },
                 { href: "/about", label: "About Us" },
               ].map((l) => (
                 <li key={l.href}>
