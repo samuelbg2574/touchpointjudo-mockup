@@ -28,19 +28,23 @@
 - Remote image domains configured in `next.config.js`
 
 ## Airtable Integration
-- `lib/airtable.ts` — fetches classes and creates booking records
+- `lib/airtable.ts` — fetches classes, counts bookings, and creates booking records
 - Requires `.env.local` with `AIRTABLE_TOKEN` and `AIRTABLE_BASE_ID`
 - Timetable falls back to hardcoded schedule if Airtable creds are missing
 - Two Airtable tables needed: `Classes` (timetable) and `Bookings` (form submissions)
+- Classes table fields: day, time, endTime, program, category, ageGroup, level, status, duration, capacity
 - Bookings table fields: Name, Email, Phone, Day, Time, Class, Age Group, Category, Status, Submitted At
+- `capacity` (Number) on a class row enables auto-computed status: ≥40% remaining→available, <40%→limited, 0→full; omit it to use manual `status`
+- `/api/classes` fetches classes and booking counts in parallel; revalidates every hour
 - See `.env.example` for setup instructions
 
 ## Remaining TODOs
 - [ ] **Owner: set up Airtable base** — create `Classes` and `Bookings` tables per `.env.example` instructions
 - [ ] **Owner: add `.env.local`** — add `AIRTABLE_TOKEN` and `AIRTABLE_BASE_ID` to production environment variables (Vercel/Netlify dashboard)
+- [ ] **Owner: add `capacity` field to Classes table** — Number field; fill in max spots per class to enable auto status (leave blank to use manual status)
 - [ ] **Email notifications** — optionally wire up Resend/SendGrid so owner gets an email when a new booking comes in (commented-out scaffold exists in `app/api/booking/route.ts`)
 - [ ] **Booking confirmations** — send an automated reply email to the person who booked
-- [ ] **Cancellation flag** — add a `cancelled` boolean field to Airtable `Classes` table so owner can mark a class cancelled and it shows as such on the site (currently status options are available/limited/enrolling)
+- [ ] **Cancellation flag** — add a `cancelled` boolean field to Airtable `Classes` table so owner can mark a class cancelled and it shows as such on the site
 
 ## Preferences
 - Always build (`npm run build`) before pushing
