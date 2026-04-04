@@ -34,15 +34,17 @@ const filters: { value: Filter; label: string }[] = [
   { value: "adults", label: "Adults"      },
 ];
 
-// Returns the next occurrence of a weekday name as a short date string e.g. "7 Apr"
+// Returns the date for a weekday within the current week (Mon–Sun), always sequential
 function nextDateForDay(dayName: string): string {
   const targetIndex = DAY_ORDER.indexOf(dayName); // 0=Mon … 6=Sun
   const today = new Date();
   // JS getDay(): 0=Sun,1=Mon…6=Sat → convert to Mon-based index
   const todayIndex = (today.getDay() + 6) % 7;
-  const diff = (targetIndex - todayIndex + 7) % 7;
-  const target = new Date(today);
-  target.setDate(today.getDate() + diff);
+  // Find Monday of this week, then add targetIndex days
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - todayIndex);
+  const target = new Date(monday);
+  target.setDate(monday.getDate() + targetIndex);
   return target.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
 }
 
