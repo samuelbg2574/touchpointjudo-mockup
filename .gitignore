@@ -4,3 +4,7 @@ node_modules/
 .env.local
 .next/
 .vercel/
+
+# Pitch materials (local only)
+pitch-deck.html
+*.pdf

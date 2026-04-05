@@ -413,7 +413,7 @@ export default function AboutPage() {
             {/* Map */}
             <div className="relative min-h-[300px] flex-1 bg-surface-mid md:min-h-[400px]">
               <iframe
-                src="https://www.google.com/maps?q=Touch%20Point%20Judo%20Academy%2C%20Beechcroft%20Road%2C%20London%20SW17%207DF&z=15&output=embed"
+                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}&q=Beechcroft+Road,London+SW17+7DF&zoom=15`}
                 title="Touch Point Judo Academy on Google Maps"
                 className="h-full min-h-[300px] w-full md:min-h-[400px]"
                 loading="lazy"
