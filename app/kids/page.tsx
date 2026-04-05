@@ -19,58 +19,58 @@ const skills = [
   {
     icon: Shield,
     title: "Confidence",
-    body: "Mastering new techniques builds unshakable self-belief that extends beyond the dojo into school and life.",
+    body: "Kids who train judo carry themselves differently. Earning a new belt or landing a technique for the first time gives them genuine pride.",
   },
   {
     icon: Brain,
     title: "Discipline",
-    body: "We teach respect for instructors and peers, fostering a disciplined mindset that pays dividends in every area.",
+    body: "Every class starts with a bow and follows a clear structure. Children learn to listen, wait their turn, and respect their training partners.",
   },
   {
     icon: Zap,
     title: "Coordination",
-    body: "Dynamic judo movements improve balance, agility, and motor skills in ways no other sport can.",
+    body: "Judo develops balance, agility, and body awareness. Parents often notice improvements in other sports and general physical confidence.",
   },
   {
     icon: Users,
     title: "Social Skills",
-    body: "Making friends and working as a team in a safe, supportive environment builds lifelong social foundations.",
+    body: "Your child will train with kids their own age in a supportive setting. Many of our students have made their closest friendships here.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Joining Touch Point Judo was the best decision we made for Leo. His focus in school has improved dramatically, and he looks forward to every session.",
-    name: "Sarah Miller",
+      "Leo was really struggling with focus at school and we didn't know what to try next. After a few months here his teacher actually asked us what had changed. He loves it.",
+    name: "Sarah M.",
     since: "Parent since 2022",
     initials: "SM",
   },
   {
     quote:
-      "The atmosphere is incredibly professional yet warm. My daughter was very shy, but the coaches make every child feel seen and valued.",
-    name: "James Chen",
+      "My daughter is naturally quite shy and I was worried she'd hate it. She cried after the first class because she didn't want to leave. The coaches are brilliant with the little ones.",
+    name: "James C.",
     since: "Parent since 2023",
     initials: "JC",
   },
   {
     quote:
-      "My son has grown so much in confidence since starting here. The instructors are patient and truly care about every child's development.",
-    name: "Emma Thompson",
+      "We've tried football, swimming, rugby. Judo is the only thing that's stuck. He's been coming for three years now and just graded to orange belt. Couldn't be prouder.",
+    name: "Emma T.",
     since: "Parent since 2021",
     initials: "ET",
   },
   {
     quote:
-      "Incredible discipline and respect being taught. Our daughter has become more focused at school and we couldn't be happier with the results.",
-    name: "David Park",
+      "Both our girls train here. The older one helps the younger ones during class which is lovely to watch. It's taught them respect in a way we couldn't manage at home!",
+    name: "David P.",
     since: "Parent since 2023",
     initials: "DP",
   },
   {
     quote:
-      "The community feel is unmatched. It's not just a club — the whole family feels part of something special. Highly recommend to any parent.",
-    name: "Rachel Adams",
+      "We only signed up for the free trial but that was two years ago. Saturday mornings at judo are now a family routine. Other parents are great too, proper little community.",
+    name: "Rachel A.",
     since: "Parent since 2022",
     initials: "RA",
   },
@@ -93,7 +93,7 @@ export default function KidsPage() {
               transition={{ duration: 0.5 }}
               className="mb-5 inline-block rounded-full bg-crimson/10 px-4 py-1.5 font-headline text-xs font-bold uppercase tracking-widest text-crimson"
             >
-              Elite Youth Program
+              Kids Judo Classes
             </motion.span>
 
             <motion.h1
@@ -114,7 +114,7 @@ export default function KidsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-5 max-w-md text-base leading-relaxed text-ink/60 md:mt-6 md:text-lg"
             >
-              Our Kids Judo Classes combine discipline, safety, and explosive fun to help your child grow into a confident and capable young individual.
+              Structured, safe, and genuinely fun. Our kids classes build confidence, coordination, and friendships that last well beyond the dojo.
             </motion.p>
 
             <motion.div
@@ -164,7 +164,7 @@ export default function KidsPage() {
               <div className="flex items-center gap-1 text-yellow-500 mb-1">
                 {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
               </div>
-              <p className="font-headline text-sm font-bold text-ink">&ldquo;Best decision we made for our son.&rdquo;</p>
+              <p className="font-headline text-sm font-bold text-ink">&ldquo;He hasn&apos;t missed a single Saturday.&rdquo;</p>
             </div>
           </motion.div>
         </div>
@@ -223,7 +223,7 @@ export default function KidsPage() {
               Our Programs
             </motion.h2>
             <p className="mt-4 max-w-xl text-ink/55">
-              Age-appropriate training designed to meet children at their developmental level.
+              Two age groups so your child trains with kids at a similar stage.
             </p>
           </div>
 
@@ -249,11 +249,11 @@ export default function KidsPage() {
                   Safety First
                 </motion.h3>
                 <p className="text-white/75 leading-relaxed text-sm md:text-base">
-                  All classes are taught on professional-grade mats by certified, background-checked instructors. Your child&apos;s safety is our absolute priority.
+                  All classes run on proper judo mats with qualified, DBS-checked coaches. We keep groups small so every child gets the attention they need.
                 </p>
               </div>
               <div className="mt-8 space-y-3">
-                {["DBS-checked coaches", "Professional tatami mats", "Small class sizes"].map((item, i) => (
+                {["All coaches DBS-checked", "Full-size tatami mats", "Max 16 kids per class"].map((item, i) => (
                   <motion.div
                     key={item}
                     initial={{ opacity: 0, x: -16 }}
@@ -290,7 +290,7 @@ export default function KidsPage() {
               </motion.div>
               <h3 className="mt-4 font-headline text-2xl font-black text-ink">Little Tigers</h3>
               <p className="mt-3 text-ink/55 leading-relaxed text-sm md:text-base">
-                Intro to Judo basics, fun coordination games, and focus &amp; listening skills in a nurturing, playful environment.
+                A playful introduction to judo for the little ones. Lots of games, movement, and learning to listen and take turns.
               </p>
               <ul className="mt-6 space-y-3 md:mt-8">
                 {["Intro to Judo basics", "Fun coordination games", "Focus & listening skills"].map((item, i) => (
@@ -330,10 +330,10 @@ export default function KidsPage() {
               </motion.div>
               <h3 className="mt-4 font-headline text-2xl font-black text-white">Young Samurais</h3>
               <p className="mt-3 text-white/60 leading-relaxed text-sm md:text-base">
-                Advanced technical Judo, controlled sparring, and a rank promotion system that rewards dedication and growth.
+                More technical judo with proper throws, groundwork, and light sparring. Kids work towards belt gradings throughout the year.
               </p>
               <ul className="mt-6 space-y-3 md:mt-8">
-                {["Advanced technical Judo", "Controlled sparring", "Rank promotion system"].map((item, i) => (
+                {["Throws and groundwork", "Light, supervised sparring", "Belt gradings twice a year"].map((item, i) => (
                   <motion.li
                     key={item}
                     initial={{ opacity: 0, x: -16 }}
@@ -365,7 +365,7 @@ export default function KidsPage() {
               Learning Through Action
             </motion.h2>
             <p className="text-ink/55 max-w-sm text-sm md:text-base">
-              Our students don&apos;t just learn martial arts — they build friendships and memories that last a lifetime.
+              Have a look at what a typical session looks like. Parents are welcome to watch from the viewing area.
             </p>
           </div>
 
@@ -398,9 +398,9 @@ export default function KidsPage() {
             >
               <div>
                 <Star size={48} className="mx-auto mb-4 text-crimson" fill="currentColor" />
-                <h4 className="font-headline text-xl font-bold text-ink mb-3 md:text-2xl">Join Our Community</h4>
+                <h4 className="font-headline text-xl font-bold text-ink mb-3 md:text-2xl">Try a Free Class</h4>
                 <p className="text-sm leading-relaxed text-ink/55">
-                  Our academy is more than just a gym — it&apos;s a family where everyone belongs.
+                  Not sure if judo is right for your child? Come along and watch, or let them join in. No commitment, no pressure.
                 </p>
               </div>
             </motion.div>
@@ -482,8 +482,8 @@ export default function KidsPage() {
 
       {/* ── CTA ──────────────────────────────────────────── */}
       <ContactCTA
-        heading="Give your child the gift of Judo."
-        subtext="Book a free, no-obligation trial session today. No gi required — just bring comfortable sports clothes."
+        heading="Book a free trial session"
+        subtext="No judo suit needed for the first class. Just comfortable sports clothes and bare feet. We'll sort the rest."
       />
     </>
   );

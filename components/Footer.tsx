@@ -13,7 +13,7 @@ export function Footer() {
               Touch Point Judo Academy
             </span>
             <p className="text-sm leading-relaxed max-w-xs">
-              Building stronger bodies, sharper minds, and lasting character through the art of Judo.
+              Judo classes for kids and adults in Tooting, South London. Running since 2012.
             </p>
           </div>
 

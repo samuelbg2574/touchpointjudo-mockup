@@ -387,8 +387,8 @@ export default function TimetablePage() {
 
       {/* ── CTA ──────────────────────────────────────────── */}
       <ContactCTA
-        heading="Questions?"
-        subtext="Get in touch on WhatsApp or email us directly for any inquiries about our programs."
+        heading="Got a question?"
+        subtext="Not sure which class is right for you or your child? Drop us a message and we'll help you pick."
       />
     </>
   );

@@ -18,59 +18,59 @@ const fadeUp = {
 const benefits = [
   {
     icon: Flame,
-    title: "Unlock Your Full Potential",
-    body: "Push past mental and physical barriers you never knew existed. Every session a new level unlocked.",
+    title: "Get Properly Fit",
+    body: "Judo is one of the most physically demanding sports there is. You'll build real, functional strength without setting foot on a treadmill.",
   },
   {
     icon: Target,
-    title: "Increase Your Discipline",
-    body: "Apply the &apos;Way of Judo&apos; to your professional and personal life. Structure breeds freedom.",
+    title: "Learn a Practical Skill",
+    body: "Every technique you learn works. Judo is one of the most effective martial arts for real self-defence situations.",
   },
   {
     icon: Users,
-    title: "Build Inner Confidence",
-    body: "Carry yourself with authority and calm through self-defense mastery and consistent practice.",
+    title: "Meet Good People",
+    body: "Our adult class is a mix of ages, backgrounds, and professions. You'll be surprised how quickly training partners become friends.",
   },
 ];
 
 const courseSteps = [
   {
     num: "01",
-    title: "The Foundation",
-    desc: "Master 'Ukemi' (safe falling), basic grips, and movement patterns to ensure a safe and solid learning environment.",
-    items: ["Intro to Judo Etiquette", "Breakfall Proficiency", "Basic Kuzushi (Off-balancing)"],
+    title: "Weeks 1-4",
+    desc: "Learn how to fall safely (ukemi), basic grips, and how to move on the mat. Everything starts here.",
+    items: ["Safe falling technique", "Basic grips and movement", "Judo etiquette and warm-ups"],
     highlight: false,
   },
   {
     num: "02",
-    title: "The Kinetic Move",
-    desc: "Introduction to major throwing techniques and ground control pin positions (Osaekomi-waza).",
-    items: ["Seoi-Nage & O-Goshi", "Pinning Fundamentals", "Flow Drills"],
+    title: "Weeks 5-8",
+    desc: "Your first proper throws and groundwork pins. This is where it starts to click and get really fun.",
+    items: ["Hip and shoulder throws", "Pinning on the ground", "Partner drills"],
     highlight: true,
   },
   {
     num: "03",
-    title: "Technical Mastery",
-    desc: "Connecting techniques, Randori (free practice), and preparation for your first belt promotion.",
-    items: ["Combination Attacks", "Transitional Judo", "Yellow Belt Grading"],
+    title: "Weeks 9-12",
+    desc: "Putting techniques together, light sparring (randori), and preparing for your first belt grading if you're ready.",
+    items: ["Linking throws together", "Free practice (randori)", "Yellow belt grading prep"],
     highlight: false,
   },
 ];
 
 const beyondBenefits = [
   {
-    title: "Elite Functional Fitness",
-    body: "Judo engages every muscle group. Develop core strength, explosive power, and metabolic conditioning without the boredom of a traditional gym.",
+    title: "A Workout That Doesn't Feel Like One",
+    body: "You'll use muscles you forgot you had. Judo builds grip strength, core stability, and cardio fitness all at once. Way more interesting than a gym session.",
     accent: "bg-crimson",
   },
   {
-    title: "Practical Self-Defence",
-    body: "Learn how to control a situation from the feet to the ground. Our course focuses on high-percentage, realistic techniques for modern safety.",
+    title: "Self-Defence That Actually Works",
+    body: "Judo is one of the few martial arts where you train at full resistance every session. The techniques work because you've tested them against someone who's trying to stop you.",
     accent: "bg-navy",
   },
   {
-    title: "A Welcoming Community",
-    body: "Train with doctors, teachers, entrepreneurs, and parents. Our academy is a professional network as much as it is a dojo.",
+    title: "A Proper Social Club",
+    body: "Our adult members grab a coffee after training, enter team competitions together, and genuinely look forward to seeing each other. It's a community, not just a class.",
     accent: "bg-crimson-light",
   },
 ];
@@ -118,10 +118,9 @@ export default function AdultsPage() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-headline text-4xl font-black leading-[1.05] tracking-tighter text-white sm:text-5xl md:text-7xl lg:text-8xl max-w-4xl"
           >
-            Transform Your{" "}
-            <span className="italic text-crimson-muted">Body</span>{" "}
-            and{" "}
-            <span className="italic text-crimson-muted">Mind</span>
+            Never Done Judo?{" "}
+            <span className="italic text-crimson-muted">Perfect.</span>{" "}
+            <span className="italic text-crimson-muted">Start Here.</span>
           </motion.h1>
 
           <motion.p
@@ -130,7 +129,7 @@ export default function AdultsPage() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="mt-6 max-w-lg text-base leading-relaxed text-white/70 md:mt-8 md:text-xl"
           >
-            A modern approach to a centuries-old martial art. Build resilience, focus, and peak physical conditioning — regardless of your starting point.
+            Our 12-week beginner course is designed for people with zero experience. You don&apos;t need to be fit, flexible, or young. You just need to turn up.
           </motion.p>
 
           <motion.div
@@ -288,7 +287,7 @@ export default function AdultsPage() {
             </motion.h2>
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-crimson" />
             <p className="mt-6 text-sm text-ink/55 md:text-base">
-              A structured 12-week progression designed specifically for the adult learner.
+              Here&apos;s what you&apos;ll cover over the 12 weeks. New courses start every term.
             </p>
           </div>
 
@@ -427,8 +426,8 @@ export default function AdultsPage() {
 
       {/* ── CTA ──────────────────────────────────────────── */}
       <ContactCTA
-        heading="Ready to write your next chapter?"
-        subtext="Spaces are strictly limited to ensure personal instruction for every student. Reach out today."
+        heading="Interested? Get in touch."
+        subtext="Next beginner course starts soon. Drop us a message to reserve your spot or ask any questions."
       />
     </>
   );

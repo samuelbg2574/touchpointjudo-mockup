@@ -17,27 +17,27 @@ const fadeUp = {
 const sensei = {
   name: "Sensei David Chen",
   role: "Head Instructor & Founder",
-  rank: "6th Dan Black Belt",
+  rank: "3rd Dan Black Belt",
   img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrtioFoKOmjIdGhCejxOaEo8tiFDxBJtGNJgdjSynxWvSypbvCznNpH20qD7-5Nzbl-uhCsko7u2b2Eoa-cl6rPNY9NbVaVrMoBNfhwz7eWvvty-Fa7JSQqnOYOWnVElt0u_uno-ohEjwchcgLg2KxcshFSBoQgCZVbeXRlEDJnrOsZqyrIn_x17yIos6M6db-qebTyw_EwaVDShiMGp950QDCxu1PPqEdz6U6JoT4jDl6Bx9nyoxFO1thiKRuBSI-jElQdqsR-u4",
   bio: [
-    "With over 25 years of competitive and coaching experience, Sensei David Chen founded Touch Point Judo Academy on the belief that Judo is a vehicle for personal transformation — not just a sport.",
-    "A former Olympic alternate and multiple-time national medallist, Sensei Chen brings world-class technical knowledge to every session while maintaining an approachable, student-first teaching philosophy.",
-    "His coaching style blends traditional Japanese Judo values with modern sport science, ensuring students of all ages develop not only on the mat but in every area of their lives. He holds advanced coaching certifications from the BJA and is a qualified DBS-checked instructor.",
+    "David started judo at 8 years old at his local club in South London and never really stopped. After competing nationally as a junior and senior, he moved into coaching and founded Touch Point in 2012.",
+    "He's coached hundreds of students from complete beginners to county-level competitors. What he enjoys most is watching a nervous kid walk in for their first session and, six months later, throw someone twice their size with a big grin on their face.",
+    "David holds BJA Level 3 coaching qualifications, is DBS-checked, first aid trained, and the club's designated safeguarding lead. He trains alongside his students every session because he still loves the sport as much as when he was eight.",
   ],
 };
 
 const facilityFeatures = [
   {
-    title: "Olympic Standard Mats",
-    body: "Professional-grade tatami with high impact absorption for maximum safety during throws.",
+    title: "Proper Judo Mats",
+    body: "Full-size tatami area with competition-standard mats. Safe for throws, comfortable for groundwork.",
   },
   {
-    title: "Modern Amenities",
-    body: "Spacious changing rooms, clean showers, and a comfortable viewing area for parents.",
+    title: "Parent Viewing Area",
+    body: "Comfortable seating where you can watch your child train. Tea and coffee available.",
   },
   {
-    title: "Dedicated S&C Zone",
-    body: "A specialised strength and conditioning area tailored for martial arts functional training.",
+    title: "Changing Rooms & Showers",
+    body: "Clean, well-maintained changing rooms with showers for after training.",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-5 max-w-lg text-base leading-relaxed text-ink/60 md:mt-6 md:text-lg"
             >
-              More than just a dojo. We are a family of martial artists dedicated to the principles of Maximum Efficiency and Mutual Benefit. Join a legacy of excellence.
+              We&apos;ve been teaching judo in Tooting since 2012. Kids, adults, complete beginners, experienced players. If you want to train, there&apos;s a place for you here.
             </motion.p>
 
             <motion.div
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
               </div>
               <p className="font-headline text-sm font-bold text-ink max-w-[160px]">
-                &ldquo;The best community for growing athletes in the region.&rdquo;
+                &ldquo;Brilliant local club. Both my kids train here.&rdquo;
               </p>
             </div>
           </motion.div>
@@ -144,11 +144,11 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="rounded-3xl bg-surface-lightest p-8 ring-1 ring-ink/5 md:col-span-2 md:p-12"
             >
-              <h2 className="mb-5 font-headline text-2xl font-black text-ink md:text-3xl">Our Mission &amp; Values</h2>
+              <h2 className="mb-5 font-headline text-2xl font-black text-ink md:text-3xl">What We&apos;re About</h2>
               <p className="text-base leading-relaxed text-ink/60 md:text-lg">
-                Touch Point Judo Academy was founded on the principle of{" "}
+                We run a proper judo club. That means qualified coaching, a safe training environment, and a genuine focus on helping every student improve. Judo has a principle called{" "}
                 <span className="font-bold text-crimson">Jita Kyoei</span>{" "}
-                (Mutual Benefit and Welfare). Our goal is to forge resilient spirits and capable bodies through the traditional art of Judo, fostering a safe environment where every student reaches their highest potential.
+                (mutual benefit) and we take it seriously. Everyone helps each other get better, from white belts to black belts.
               </p>
             </motion.div>
 
@@ -162,9 +162,9 @@ export default function AboutPage() {
               <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
                 <Star size={28} fill="currentColor" className="text-white" />
               </div>
-              <h3 className="mb-3 font-headline text-xl font-black md:text-2xl">Integrity First</h3>
+              <h3 className="mb-3 font-headline text-xl font-black md:text-2xl">Respect Matters</h3>
               <p className="text-sm leading-relaxed text-white/70">
-                Character development is at the heart of everything we do, on and off the mat.
+                We expect good behaviour, good manners, and respect for training partners. That goes for kids and adults alike.
               </p>
             </motion.div>
           </div>
@@ -298,7 +298,7 @@ export default function AboutPage() {
               transition={{ duration: 0.7 }}
             >
               <h2 className="font-headline text-3xl font-black tracking-tighter text-ink md:text-5xl">
-                World-Class Dojo Environment
+                Our Training Space
               </h2>
               <div className="mt-8 space-y-5 md:mt-10 md:space-y-6">
                 {facilityFeatures.map((f, i) => (
@@ -338,7 +338,7 @@ export default function AboutPage() {
             >
               Visit Us
             </motion.h2>
-            <p className="mt-4 text-ink/50">Come find us — the kettle is always on.</p>
+            <p className="mt-4 text-ink/50">We&apos;re based in Tooting, just off Beechcroft Road. Pop in any time.</p>
           </div>
 
           <div className="overflow-hidden rounded-4xl shadow-xl ring-1 ring-ink/5 lg:flex">

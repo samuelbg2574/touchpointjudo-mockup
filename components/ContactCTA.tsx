@@ -11,8 +11,8 @@ interface ContactCTAProps {
 }
 
 export function ContactCTA({
-  heading = "Ready to start your journey?",
-  subtext = "No experience or equipment required for your first session. Reach out — we'd love to hear from you.",
+  heading = "Come and try a class",
+  subtext = "No experience or equipment needed for your first session. Just get in touch and we'll sort you out.",
   dark = true,
 }: ContactCTAProps) {
   return (
@@ -81,7 +81,7 @@ export function ContactCTA({
             dark ? "text-white/30" : "text-ink/30"
           }`}
         >
-          No experience or equipment required for your first session
+          First session is free. No equipment needed.
         </p>
       </div>
     </section>

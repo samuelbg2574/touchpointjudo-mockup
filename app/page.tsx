@@ -20,17 +20,17 @@ const benefits = [
   {
     icon: Shield,
     title: "Discipline",
-    body: "Learn consistency, respect, and the power of focused practice in a structured, purposeful environment.",
+    body: "Kids learn to listen, follow instructions, and stick with things even when they're hard. Adults find structure that carries over into daily life.",
   },
   {
     icon: Brain,
     title: "Confidence",
-    body: "Through skill mastery and physical challenge, students build an unshakeable sense of self-worth and resilience.",
+    body: "There's nothing quite like landing your first throw. Every small win on the mat builds real, earned self-belief.",
   },
   {
     icon: Zap,
     title: "Fitness",
-    body: "Improve balance, flexibility, and functional strength through dynamic movements and full-body conditioning.",
+    body: "Judo is a full-body workout disguised as fun. You'll build strength, balance, and coordination without ever touching a treadmill.",
   },
 ];
 
@@ -69,9 +69,9 @@ export default function Home() {
             animate="show"
             className="font-headline text-4xl sm:text-5xl font-black leading-[1.05] tracking-tighter text-white md:text-7xl lg:text-8xl max-w-3xl"
           >
-            Empowering Kids{" "}
+            Judo for Kids{" "}
             <span className="text-crimson-muted">&amp;</span> Adults{" "}
-            <span className="italic font-extrabold">through Judo</span>
+            <span className="italic font-extrabold">in Tooting</span>
           </motion.h1>
 
           <motion.p
@@ -81,7 +81,7 @@ export default function Home() {
             animate="show"
             className="mt-6 max-w-md text-base leading-relaxed text-white/70 md:mt-8 md:text-xl"
           >
-            Discover the art of balance, discipline, and respect. Join a community dedicated to personal growth and athletic excellence.
+            Friendly, welcoming classes for all ages and abilities. Whether your child needs a confidence boost or you fancy trying something new yourself, we&apos;d love to have you.
           </motion.p>
 
           <motion.div
@@ -155,9 +155,7 @@ export default function Home() {
               transition={{ duration: 0.7 }}
             >
               <p className="text-base leading-relaxed text-ink/60 md:text-lg">
-                Judo is more than a sport — it&apos;s a way of life. At Touch Point, we live by the philosophy of{" "}
-                <em>&ldquo;Maximum Efficiency, Mutual Welfare.&rdquo;</em>{" "}
-                Whether you&apos;re a parent seeking a structured activity for your child or an adult ready for a new challenge, our academy offers a safe, supportive environment where growth is inevitable.
+                At Touch Point, we believe judo teaches you more than how to throw someone. It teaches patience, respect, and how to pick yourself up when things don&apos;t go your way. We keep classes small, coaches qualified, and the atmosphere friendly. If you&apos;re looking for somewhere your child can thrive, or a challenge for yourself, come and see what we&apos;re about.
               </p>
             </motion.div>
           </div>
@@ -178,7 +176,7 @@ export default function Home() {
               Why Choose Judo?
             </motion.h2>
             <p className="mt-4 text-ink/50">
-              Foundational skills that transcend the mat and impact every area of life.
+              It&apos;s not just about sport. Here&apos;s what our students actually get out of training.
             </p>
           </div>
 
@@ -246,7 +244,7 @@ export default function Home() {
                   Kids Classes
                 </h3>
                 <p className="mb-4 max-w-sm text-white/75 text-sm md:mb-6 md:text-base">
-                  Coordination, confidence, and character — for ages 5 and up.
+                  Fun, structured sessions for ages 4 to 12. First class is free.
                 </p>
                 <Link
                   href="/kids"
@@ -277,7 +275,7 @@ export default function Home() {
                   Adult Classes
                 </h3>
                 <p className="mb-4 max-w-sm text-white/75 text-sm md:mb-6 md:text-base">
-                  From first steps to competition. Technique, fitness, and community.
+                  Complete beginners welcome. No experience or fitness level needed.
                 </p>
                 <Link
                   href="/adults"
@@ -293,8 +291,8 @@ export default function Home() {
 
       {/* ── CTA ──────────────────────────────────────────── */}
       <ContactCTA
-        heading="Ready to step on the mat?"
-        subtext="No experience needed. Just the willingness to try. Reach out and we'll take care of the rest."
+        heading="Come and try a class"
+        subtext="Your first session is free and you don't need any equipment. Just drop us a message and we'll get you booked in."
       />
     </>
   );
